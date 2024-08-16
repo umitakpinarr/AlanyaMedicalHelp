@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StokGuncelleme));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.stockId = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -259,9 +260,10 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "StokGuncelleme";
-            this.Text = "StokGuncelleme";
+            this.Text = "Stok Güncelleme";
             this.Load += new System.EventHandler(this.StokGuncelleme_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

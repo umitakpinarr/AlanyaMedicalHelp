@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MusteriBilgileri));
             this.label1 = new System.Windows.Forms.Label();
             this.musteriAdi = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -388,9 +389,10 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MusteriBilgileri";
-            this.Text = "MusteriBilgileri";
+            this.Text = "Musteri Bilgileri";
             this.Load += new System.EventHandler(this.MusteriBilgileri_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

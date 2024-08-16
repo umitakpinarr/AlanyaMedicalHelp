@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StokIslemleri));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.stockId = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -171,7 +172,7 @@
             this.groupBox2.Size = new System.Drawing.Size(1694, 248);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Müşteri İşlemleri";
+            this.groupBox2.Text = " ";
             // 
             // button3
             // 
@@ -238,9 +239,10 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "StokIslemleri";
-            this.Text = "StokIslemleri";
+            this.Text = "Stok İşlemleri";
             this.Load += new System.EventHandler(this.StokIslemleri_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

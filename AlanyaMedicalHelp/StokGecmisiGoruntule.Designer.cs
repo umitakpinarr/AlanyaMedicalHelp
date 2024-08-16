@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StokGecmisiGoruntule));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.stokId = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -61,9 +62,10 @@
             this.Controls.Add(this.stokId);
             this.Controls.Add(this.dataGridView1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "StokGecmisiGoruntule";
-            this.Text = "StokGecmisiGoruntule";
+            this.Text = "Stok Geçmişi Görüntüleme";
             this.Load += new System.EventHandler(this.StokGecmisiGoruntule_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirmaTumBorcGoruntuleme));
             this.firmaId = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -59,8 +60,9 @@
             this.ClientSize = new System.Drawing.Size(1312, 665);
             this.Controls.Add(this.firmaId);
             this.Controls.Add(this.dataGridView1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FirmaTumBorcGoruntuleme";
-            this.Text = "FirmaTumBorcGoruntuleme";
+            this.Text = "Firma Tüm Borçlar";
             this.Load += new System.EventHandler(this.FirmaTumBorcGoruntuleme_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

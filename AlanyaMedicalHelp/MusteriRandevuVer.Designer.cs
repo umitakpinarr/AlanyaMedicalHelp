@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MusteriRandevuVer));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.button1 = new System.Windows.Forms.Button();
@@ -315,9 +316,10 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MusteriRandevuVer";
-            this.Text = "MusteriRandevuVer";
+            this.Text = "Müşteri Randevu Ver";
             this.Load += new System.EventHandler(this.MusteriRandevuVer_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

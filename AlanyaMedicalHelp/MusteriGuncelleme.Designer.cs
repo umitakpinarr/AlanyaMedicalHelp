@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MusteriGuncelleme));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -364,9 +365,10 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MusteriGuncelleme";
-            this.Text = "MusteriGuncelleme";
+            this.Text = "Müşteri Güncelleme";
             this.Load += new System.EventHandler(this.MusteriGuncelleme_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

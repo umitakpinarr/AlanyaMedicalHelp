@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FirmaBilgileri));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
@@ -193,9 +194,10 @@
             this.Controls.Add(this.groupBox2);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FirmaBilgileri";
-            this.Text = "FirmaBilgileri";
+            this.Text = "Firma Bilgileri";
             this.Load += new System.EventHandler(this.FirmaBilgileri_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
