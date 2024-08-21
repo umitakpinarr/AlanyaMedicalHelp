@@ -49,7 +49,6 @@ namespace AlanyaMedicalHelp
                         x.Note,
                         PaymentStatus = x.PaymentStatus == true ? "Ödendi" : x.PaymentStatus == false ? "Ödenmedi" : "Bulunamadı",  // Koşullu ifade
                         PaymentType = x.PaymentType == 1 ? "Nakit" : x.PaymentType == 2 ? "Sigorta" : x.PaymentType == 3 ? "Kredi Kartı" : x.PaymentType == 4 ? "EFT" : "Bulunamadı",  // Koşullu ifade
-                        AppointmentStatus = x.AppointmentStatus == true ? "Randevu tamamlandı" : "Randevu tamamlanmadı",
                         x.AppointmentDate,
                         x.CreateDate,
                     }).ToList();
@@ -68,7 +67,6 @@ namespace AlanyaMedicalHelp
             x.Note,
             PaymentStatus = x.PaymentStatus == true ? "Ödendi" : x.PaymentStatus == false ? "Ödenmedi" : "Bulunamadı",  // Koşullu ifade
             PaymentType = x.PaymentType == 1 ? "Nakit" : x.PaymentType == 2 ? "Sigorta" : x.PaymentType == 3 ? "Kredi Kartı" : x.PaymentType == 4 ? "EFT" : "Bulunamadı",  // Koşullu ifade
-            AppointmentStatus = x.AppointmentStatus == true ? "Randevu tamamlandı" : "Randevu tamamlanmadı",
             x.AppointmentDate,
             x.CreateDate,
         }).ToList();
@@ -80,11 +78,11 @@ namespace AlanyaMedicalHelp
             dataGridView1.Columns["Id"].HeaderText = "ID";
             dataGridView1.Columns["Descriptions"].HeaderText = "Yapılacaklar";
             dataGridView1.Columns["Note"].HeaderText = "Not";
-            dataGridView1.Columns["AppointmentStatus"].HeaderText = "Randevu Durumu";
             dataGridView1.Columns["PaymentStatus"].HeaderText = "Ödeme Durumu";
             dataGridView1.Columns["PaymentType"].HeaderText = "Ödeme Türü";
             dataGridView1.Columns["AppointmentDate"].HeaderText = "Randevu Tarihi";
             dataGridView1.Columns["CreateDate"].HeaderText = "Oluşturulma Tarihi";
+            dataGridView1.Columns["Id"].Visible = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
 
@@ -118,6 +116,11 @@ namespace AlanyaMedicalHelp
         private void RandvuGuncelle_FormClosed(object sender, FormClosedEventArgs e)
         {
             Listele();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

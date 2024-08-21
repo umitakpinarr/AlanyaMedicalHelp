@@ -14,12 +14,11 @@ namespace AlanyaMedicalHelp
     {
         private readonly AlanyaMedicalHelpEntities _dbContext;
 
-        public MusteriVeresiye(string id, string customerName, string customerAdress, string customerMail, string customerPhone, string customerCountry, string customerImage)
+        public MusteriVeresiye(string id, string customerName, string customerMail, string customerPhone, string customerCountry, string customerImage)
         {
             InitializeComponent();
             musteriId.Text = id;
             musteriAdi.Text = customerName;
-            MusteriAdres.Text = customerAdress;
             musteriMail.Text = customerMail;
             MusteriTel.Text = customerPhone;
             MusteriUlke.Text = customerCountry;
@@ -52,6 +51,9 @@ namespace AlanyaMedicalHelp
             dataGridView1.Columns["PriceType"].HeaderText = "Para Birimi";
             dataGridView1.Columns["PaymentStatus"].HeaderText = "Ödeme Durumu";
             dataGridView1.Columns["CreateDate"].HeaderText = "Oluşturulma Tarihi";
+            dataGridView1.Columns["Id"].Visible = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
 
         private void Temizle()

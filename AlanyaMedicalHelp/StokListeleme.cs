@@ -71,6 +71,8 @@ namespace AlanyaMedicalHelp
                 dataGridView1.Columns["AlertCount"].HeaderText = "Uyarı Sayısı";
                 dataGridView1.Columns["Description"].HeaderText = "Açıklama";
                 dataGridView1.Columns["CreateDate"].HeaderText = "Oluşturulma Tarihi";
+                dataGridView1.Columns["Id"].Visible = false;
+
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             }
@@ -108,6 +110,23 @@ namespace AlanyaMedicalHelp
         private void StokIslemleri_FormClosed(object sender, FormClosedEventArgs e)
         {
             Listele();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(textBox1.Text))
+            {
+                Listele(textBox1.Text);
+            }
+            else
+            {
+                Listele();
+            }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

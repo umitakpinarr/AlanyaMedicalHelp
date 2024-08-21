@@ -45,8 +45,35 @@ namespace AlanyaMedicalHelp
             dataGridView1.Columns["Count"].HeaderText = "Adet";
             dataGridView1.Columns["AlertCount"].HeaderText = "Uyarı Adet";
             dataGridView1.Columns["Description"].HeaderText = "Açıklama";
+            dataGridView1.Columns["Id"].Visible = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(textBox1.Text))
+            {
+                using (var dbContext = new AlanyaMedicalHelpEntities())
+                {
+                    var filteredData = _dbContext.Stock.Where(x=> x.Name.Contains(textBox1.Text))
+    .Where(x => x.StockCount.Sum(ss => ss.Type == 1 ? ss.Count : -ss.Count) < x.AlertCount)
+    .Select(x => new
+    {
+        x.Id,
+        x.Name,
+        Count = x.StockCount.Sum(ss => ss.Type == 1 ? ss.Count : -ss.Count),
+        x.AlertCount,
+        x.Description
+    })
+    .ToList();
+                    dataGridView1.DataSource = filteredData;
+                }
+            }
+            else
+            {
+                Listele();
+            }
         }
     }
 }

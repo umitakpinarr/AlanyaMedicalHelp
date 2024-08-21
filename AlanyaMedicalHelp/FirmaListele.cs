@@ -48,6 +48,7 @@ namespace AlanyaMedicalHelp
                 dataGridView1.Columns["Name"].HeaderText = "Firma Adı";
                 dataGridView1.Columns["Payment"].HeaderText = "Borç";
                 dataGridView1.Columns["CreateDate"].HeaderText = "Oluşturulma Tarihi";
+                dataGridView1.Columns["Id"].Visible = false;
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             }
@@ -86,6 +87,39 @@ namespace AlanyaMedicalHelp
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(textBox1.Text))
+            {
+                using (var dbContext = new AlanyaMedicalHelpEntities())
+                {
+                    var values = dbContext.Company.Where(x => x.Name.Contains(textBox1.Text))
+                    .Select(x => new
+                    {
+                        x.Id,
+                        x.Name,
+                        Payment = x.CompanyPayment.Sum(ss => ss.Type == 1 ? ss.Price : -ss.Price),
+                        x.CreateDate
+                    })
+                    .ToList();
+                    dataGridView1.DataSource = values;
+                    dataGridView1.Columns["Id"].HeaderText = "ID";
+                    dataGridView1.Columns["Name"].HeaderText = "Firma Adı";
+                    dataGridView1.Columns["Payment"].HeaderText = "Borç";
+                    dataGridView1.Columns["CreateDate"].HeaderText = "Oluşturulma Tarihi";
+
+                    dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                    dataGridView1.DataSource = values;
+
+                }
+            }
+            else
+            {
+                Listele();
+            }
         }
     }
 }

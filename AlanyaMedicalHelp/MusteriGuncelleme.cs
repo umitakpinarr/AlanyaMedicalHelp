@@ -36,7 +36,6 @@ namespace AlanyaMedicalHelp
 
             var values = _dbContext.Customer.Where(x => x.Id == convertCustomerId).FirstOrDefault();
             musteriAdi.Text = values.Name;
-            MusteriAdres.Text = values.Adress;
             musteriMail.Text = values.Mail;
             MusteriTel.Text = values.Phone;
             MusteriUlke.Text = values.Country;
@@ -45,7 +44,6 @@ namespace AlanyaMedicalHelp
             textBox2.Text = values.Mail;
             textBox3.Text = values.Phone;
             textBox4.Text = values.Country;
-            textBox5.Text = values.Adress;
         }
 
 
@@ -96,7 +94,6 @@ namespace AlanyaMedicalHelp
             values.Mail = textBox2.Text;
             values.Phone = textBox3.Text;
             values.Country = textBox4.Text;
-            values.Adress = textBox5.Text;
             _dbContext.Customer.AddOrUpdate(values);
             _dbContext.SaveChanges();
             MessageBox.Show("Müşteri Bilgileri Başarılı bir şekilde güncellendi.");

@@ -186,11 +186,23 @@
     <Compile Include="RandevuGuncelle.Designer.cs">
       <DependentUpon>RandevuGuncelle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Randevular.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Randevular.Designer.cs">
+      <DependentUpon>Randevular.cs</DependentUpon>
+    </Compile>
     <Compile Include="SecilenMusteriTumRandevular.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SecilenMusteriTumRandevular.Designer.cs">
       <DependentUpon>SecilenMusteriTumRandevular.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SigortaIslemleri.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SigortaIslemleri.Designer.cs">
+      <DependentUpon>SigortaIslemleri.cs</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -312,8 +324,14 @@
     <EmbeddedResource Include="RandevuGuncelle.resx">
       <DependentUpon>RandevuGuncelle.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Randevular.resx">
+      <DependentUpon>Randevular.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SecilenMusteriTumRandevular.resx">
       <DependentUpon>SecilenMusteriTumRandevular.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SigortaIslemleri.resx">
+      <DependentUpon>SigortaIslemleri.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StokArttırma.resx">
       <DependentUpon>StokArttırma.cs</DependentUpon>

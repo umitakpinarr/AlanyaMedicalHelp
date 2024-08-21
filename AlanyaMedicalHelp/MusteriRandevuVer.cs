@@ -15,14 +15,13 @@ namespace AlanyaMedicalHelp
     public partial class MusteriRandevuVer : Form
     {
         private readonly AlanyaMedicalHelpEntities _dbContext;
-        public MusteriRandevuVer(string id, string customerName, string customerAdress, string customerMail, string customerPhone, string customerCountry, string customerImage)
+        public MusteriRandevuVer(string id, string customerName, string customerMail, string customerPhone, string customerCountry, string customerImage)
         {
             InitializeComponent();
             _dbContext = new AlanyaMedicalHelpEntities();
 
             musteriId.Text = id;
             musteriAdi.Text = customerName;
-            MusteriAdres.Text = customerAdress;
             musteriMail.Text = customerMail;
             MusteriTel.Text = customerPhone;
             MusteriUlke.Text = customerCountry;

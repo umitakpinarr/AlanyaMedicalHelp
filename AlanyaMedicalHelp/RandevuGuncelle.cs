@@ -43,7 +43,6 @@ namespace AlanyaMedicalHelp
             dateTimePicker1.Value = values.AppointmentDate.Value.Date;
             dateTimePicker2.Value = values.AppointmentDate.Value;
             musteriAdi.Text = values.Customer.Name;
-            MusteriAdres.Text = values.Customer.Adress;
             musteriMail.Text = values.Customer.Mail;
             MusteriTel.Text = values.Customer.Phone;
             MusteriUlke.Text = values.Customer.Country;
@@ -136,7 +135,7 @@ namespace AlanyaMedicalHelp
             values.PriceType = priceType;
             values.PaymentType = paymentType;
             values.AppointmentStatus = checkBox2.Checked;
-            if (values.PaymentStatus == false && values.Payment.Where(x=> x.AppointmentId == values.Id).Any() == false)
+            if (values.PaymentStatus == false && values.Payment.Where(x=> x.AppointmentId == values.Id).Any() == false && paymentType == 0)
             {
                 Payment payment = new Payment
                 {

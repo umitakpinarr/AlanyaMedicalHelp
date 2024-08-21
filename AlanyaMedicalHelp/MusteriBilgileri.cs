@@ -63,7 +63,6 @@ namespace AlanyaMedicalHelp
                 if (values != null)
                 {
                     musteriAdi.Text = values.Name;
-                    MusteriAdres.Text = values.Adress;
                     musteriMail.Text = values.Mail;
                     MusteriTel.Text = values.Phone;
                     MusteriUlke.Text = values.Country;
@@ -89,7 +88,6 @@ namespace AlanyaMedicalHelp
         {
             string Id = musteriId.Text;
             string musteriAd = musteriAdi.Text;
-            string MusteriAdre = MusteriAdres.Text;
             string MusteriMai = musteriMail.Text;
             string MusteriTelefo = MusteriTel.Text;
             string MusteriUlk = MusteriUlke.Text;
@@ -97,7 +95,7 @@ namespace AlanyaMedicalHelp
 
             using (var dbContext = new AlanyaMedicalHelpEntities())
             {
-                MusteriRandevuVer form2 = new MusteriRandevuVer(Id, musteriAd, MusteriAdre, MusteriMai, MusteriTelefo, MusteriUlk, imagePat);
+                MusteriRandevuVer form2 = new MusteriRandevuVer(Id, musteriAd, MusteriMai, MusteriTelefo, MusteriUlk, imagePat);
                 form2.Show();
             }
         }
@@ -109,7 +107,6 @@ namespace AlanyaMedicalHelp
             string Id = musteriId.Text;
 
             string musteriAd = musteriAdi.Text;
-            string MusteriAdre = MusteriAdres.Text;
             string MusteriMai = musteriMail.Text;
             string MusteriTelefo = MusteriTel.Text;
             string MusteriUlk = MusteriUlke.Text;
@@ -137,7 +134,6 @@ namespace AlanyaMedicalHelp
             string Id = musteriId.Text;
 
             string musteriAd = musteriAdi.Text;
-            string MusteriAdre = MusteriAdres.Text;
             string MusteriMai = musteriMail.Text;
             string MusteriTelefo = MusteriTel.Text;
             string MusteriUlk = MusteriUlke.Text;
@@ -154,14 +150,13 @@ namespace AlanyaMedicalHelp
             string Id = musteriId.Text;
 
             string musteriAd = musteriAdi.Text;
-            string MusteriAdre = MusteriAdres.Text;
             string MusteriMai = musteriMail.Text;
             string MusteriTelefo = MusteriTel.Text;
             string MusteriUlk = MusteriUlke.Text;
             string imagePat = pictureBox1.ImageLocation;
 
 
-            MusteriVeresiye form2 = new MusteriVeresiye(Id, musteriAd, MusteriAdre, MusteriMai, MusteriTelefo, MusteriUlk, imagePat);
+            MusteriVeresiye form2 = new MusteriVeresiye(Id, musteriAd, MusteriMai, MusteriTelefo, MusteriUlk, imagePat);
             form2.FormClosed += new FormClosedEventHandler(MusteriGuncelleme_FormClosed);
             form2.Show();
         }

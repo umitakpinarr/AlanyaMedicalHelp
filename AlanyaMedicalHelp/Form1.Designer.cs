@@ -33,15 +33,17 @@
             this.müşteriİşlemleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.müşteriEklemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.müşteriGörüntülemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.günlükRandevularToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.randevularToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.firmaİşlemleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.firmaEklemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.firmaGörüntülemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stokİşlemleriToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stokEklemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stokGörüntülemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.günlükRandevularToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.stokUyarıToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.ödenmeyenSigortalarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,10 +51,12 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.müşteriİşlemleriToolStripMenuItem,
+            this.günlükRandevularToolStripMenuItem,
+            this.randevularToolStripMenuItem,
             this.firmaİşlemleriToolStripMenuItem,
             this.stokİşlemleriToolStripMenuItem,
-            this.günlükRandevularToolStripMenuItem,
-            this.stokUyarıToolStripMenuItem});
+            this.stokUyarıToolStripMenuItem,
+            this.ödenmeyenSigortalarToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 3, 0, 3);
@@ -82,6 +86,20 @@
             this.müşteriGörüntülemeToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
             this.müşteriGörüntülemeToolStripMenuItem.Text = "Müşteri Görüntüleme";
             this.müşteriGörüntülemeToolStripMenuItem.Click += new System.EventHandler(this.müşteriGörüntülemeToolStripMenuItem_Click);
+            // 
+            // günlükRandevularToolStripMenuItem
+            // 
+            this.günlükRandevularToolStripMenuItem.Name = "günlükRandevularToolStripMenuItem";
+            this.günlükRandevularToolStripMenuItem.Size = new System.Drawing.Size(119, 19);
+            this.günlükRandevularToolStripMenuItem.Text = "Günlük Randevular";
+            this.günlükRandevularToolStripMenuItem.Click += new System.EventHandler(this.günlükRandevularToolStripMenuItem_Click);
+            // 
+            // randevularToolStripMenuItem
+            // 
+            this.randevularToolStripMenuItem.Name = "randevularToolStripMenuItem";
+            this.randevularToolStripMenuItem.Size = new System.Drawing.Size(78, 19);
+            this.randevularToolStripMenuItem.Text = "Randevular";
+            this.randevularToolStripMenuItem.Click += new System.EventHandler(this.randevularToolStripMenuItem_Click);
             // 
             // firmaİşlemleriToolStripMenuItem
             // 
@@ -129,12 +147,12 @@
             this.stokGörüntülemeToolStripMenuItem.Text = "Stok Görüntüleme";
             this.stokGörüntülemeToolStripMenuItem.Click += new System.EventHandler(this.stokGörüntülemeToolStripMenuItem_Click);
             // 
-            // günlükRandevularToolStripMenuItem
+            // stokUyarıToolStripMenuItem
             // 
-            this.günlükRandevularToolStripMenuItem.Name = "günlükRandevularToolStripMenuItem";
-            this.günlükRandevularToolStripMenuItem.Size = new System.Drawing.Size(119, 19);
-            this.günlükRandevularToolStripMenuItem.Text = "Günlük Randevular";
-            this.günlükRandevularToolStripMenuItem.Click += new System.EventHandler(this.günlükRandevularToolStripMenuItem_Click);
+            this.stokUyarıToolStripMenuItem.Name = "stokUyarıToolStripMenuItem";
+            this.stokUyarıToolStripMenuItem.Size = new System.Drawing.Size(72, 19);
+            this.stokUyarıToolStripMenuItem.Text = "Stok Uyarı";
+            this.stokUyarıToolStripMenuItem.Click += new System.EventHandler(this.stokUyarıToolStripMenuItem_Click);
             // 
             // panel1
             // 
@@ -144,12 +162,12 @@
             this.panel1.Size = new System.Drawing.Size(1766, 845);
             this.panel1.TabIndex = 1;
             // 
-            // stokUyarıToolStripMenuItem
+            // ödenmeyenSigortalarToolStripMenuItem
             // 
-            this.stokUyarıToolStripMenuItem.Name = "stokUyarıToolStripMenuItem";
-            this.stokUyarıToolStripMenuItem.Size = new System.Drawing.Size(72, 19);
-            this.stokUyarıToolStripMenuItem.Text = "Stok Uyarı";
-            this.stokUyarıToolStripMenuItem.Click += new System.EventHandler(this.stokUyarıToolStripMenuItem_Click);
+            this.ödenmeyenSigortalarToolStripMenuItem.Name = "ödenmeyenSigortalarToolStripMenuItem";
+            this.ödenmeyenSigortalarToolStripMenuItem.Size = new System.Drawing.Size(137, 19);
+            this.ödenmeyenSigortalarToolStripMenuItem.Text = "Ödenmeyen Sigortalar";
+            this.ödenmeyenSigortalarToolStripMenuItem.Click += new System.EventHandler(this.ödenmeyenSigortalarToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -187,6 +205,8 @@
         private System.Windows.Forms.ToolStripMenuItem günlükRandevularToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem stokUyarıToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem randevularToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ödenmeyenSigortalarToolStripMenuItem;
     }
 }
 

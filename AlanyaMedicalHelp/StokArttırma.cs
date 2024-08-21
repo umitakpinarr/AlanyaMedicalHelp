@@ -35,14 +35,17 @@ namespace AlanyaMedicalHelp
                     x.Stock.Name,
                     x.Count,
                     Type = "Arttırma",
-                    x.CreateDate
-                }).ToList();
+                    x.Description,
+                    x.CreateDate,
+                }).OrderByDescending(x => x.CreateDate).ToList();
                 dataGridView1.DataSource = values;
                 dataGridView1.Columns["Id"].HeaderText = "ID";
                 dataGridView1.Columns["Name"].HeaderText = "Stok Adı";
                 dataGridView1.Columns["Count"].HeaderText = "Adet";
                 dataGridView1.Columns["Type"].HeaderText = "İşlem";
                 dataGridView1.Columns["CreateDate"].HeaderText = "Oluşturulma Tarihi";
+                dataGridView1.Columns["Description"].HeaderText = "Açıklama";
+                dataGridView1.Columns["Id"].Visible = false;
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             }

@@ -32,13 +32,11 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.MusteriAdres = new System.Windows.Forms.TextBox();
             this.MusteriUlke = new System.Windows.Forms.TextBox();
             this.MusteriTel = new System.Windows.Forms.TextBox();
             this.MusteriMail = new System.Windows.Forms.TextBox();
             this.musteriAdi = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -51,13 +49,11 @@
             this.groupBox2.Controls.Add(this.pictureBox2);
             this.groupBox2.Controls.Add(this.button2);
             this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.MusteriAdres);
             this.groupBox2.Controls.Add(this.MusteriUlke);
             this.groupBox2.Controls.Add(this.MusteriTel);
             this.groupBox2.Controls.Add(this.MusteriMail);
             this.groupBox2.Controls.Add(this.musteriAdi);
             this.groupBox2.Controls.Add(this.label11);
-            this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.label15);
@@ -98,7 +94,7 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(112)))), ((int)(((byte)(67)))));
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(130, 216);
+            this.button1.Location = new System.Drawing.Point(129, 182);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(194, 35);
@@ -106,14 +102,6 @@
             this.button1.Text = "Ekle";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // MusteriAdres
-            // 
-            this.MusteriAdres.Location = new System.Drawing.Point(130, 180);
-            this.MusteriAdres.Margin = new System.Windows.Forms.Padding(4);
-            this.MusteriAdres.Name = "MusteriAdres";
-            this.MusteriAdres.Size = new System.Drawing.Size(193, 25);
-            this.MusteriAdres.TabIndex = 18;
             // 
             // MusteriUlke
             // 
@@ -156,16 +144,6 @@
             this.label11.Size = new System.Drawing.Size(77, 17);
             this.label11.TabIndex = 9;
             this.label11.Text = "Adı Soyadı :";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(76, 184);
-            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(49, 17);
-            this.label12.TabIndex = 13;
-            this.label12.Text = "Adres :";
             // 
             // label13
             // 
@@ -221,13 +199,11 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox MusteriAdres;
         private System.Windows.Forms.TextBox MusteriUlke;
         private System.Windows.Forms.TextBox MusteriTel;
         private System.Windows.Forms.TextBox MusteriMail;
         private System.Windows.Forms.TextBox musteriAdi;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;

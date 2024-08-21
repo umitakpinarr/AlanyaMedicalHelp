@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -48,50 +50,48 @@ namespace AlanyaMedicalHelp
                         x.Mail,
                         x.Phone,
                         CustomerPayment = x.Payment.Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price),
-                        x.Adress,
                         x.Country,
+                        AppointmentDate = x.Appointment.OrderByDescending(a => a.AppointmentDate).FirstOrDefault().AppointmentDate,
                         x.CreateDate,
-                        x.Image
 
-                    }).ToList();
+                    }).OrderByDescending(x=> x.AppointmentDate).ToList();
                     dataGridView1.DataSource = values;
-                    dataGridView1.Columns["Id"].HeaderText = "ID";
                     dataGridView1.Columns["Name"].HeaderText = "Müşteri Adı Soyadı";
                     dataGridView1.Columns["Mail"].HeaderText = "Müşteri Mail";
                     dataGridView1.Columns["Phone"].HeaderText = "Müşteri Telefon";
                     dataGridView1.Columns["CustomerPayment"].HeaderText = "Borç";
                     dataGridView1.Columns["Image"].HeaderText = "Resim Yolu";
                     dataGridView1.Columns["Country"].HeaderText = "Müşteri Ülke";
-                    dataGridView1.Columns["Adress"].HeaderText = "Müşteri Adres";
+                    dataGridView1.Columns["AppointmentDate"].HeaderText = "Son Randevu Tarihi";
                     dataGridView1.Columns["CreateDate"].HeaderText = "Oluşturulma Tarihi";
-                    dataGridView1.Columns["Image"].Visible = false;
+                    dataGridView1.Columns["Id"].Visible = false;
                 }
                 else
                 {
-                    var values = dbContext.Customer.Select(x => new
-                    {
-                        x.Id,
-                        x.Name,
-                        x.Mail,
-                        x.Phone,
-                        CustomerPayment = x.Payment.Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price),
-                        x.Adress,
-                        x.Country,
-                        x.CreateDate,
-                        x.Image
+                    var values = dbContext.Customer
+     .Select(x => new
+     {
+         x.Id,
+         x.Name,
+         x.Mail,
+         x.Phone,
+         CustomerPayment = x.Payment.Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price),
+         x.Country,
+         AppointmentDate = x.Appointment.OrderByDescending(a => a.AppointmentDate).FirstOrDefault().AppointmentDate,
+         x.CreateDate,
+     })
+     .OrderByDescending(x => x.AppointmentDate).ToList();
 
-                    }).ToList();
                     dataGridView1.DataSource = values;
-                    dataGridView1.Columns["Id"].HeaderText = "ID";
                     dataGridView1.Columns["Name"].HeaderText = "Müşteri Adı Soyadı";
                     dataGridView1.Columns["Mail"].HeaderText = "Müşteri Mail";
                     dataGridView1.Columns["Phone"].HeaderText = "Müşteri Telefon";
                     dataGridView1.Columns["CustomerPayment"].HeaderText = "Borç";
-                    dataGridView1.Columns["Image"].HeaderText = "Resim Yolu";
                     dataGridView1.Columns["Country"].HeaderText = "Müşteri Ülke";
-                    dataGridView1.Columns["Adress"].HeaderText = "Müşteri Adres";
+                    dataGridView1.Columns["AppointmentDate"].HeaderText = "Son Randevu Tarihi";
+
                     dataGridView1.Columns["CreateDate"].HeaderText = "Oluşturulma Tarihi";
-                    dataGridView1.Columns["Image"].Visible = false;
+                    dataGridView1.Columns["Id"].Visible = false;
                 }
 
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -117,7 +117,6 @@ namespace AlanyaMedicalHelp
                     string Id = selectedRow.Cells["Id"].Value?.ToString() ?? string.Empty;
                     
 
-                    var imagePath = selectedRow.Cells["Image"].Value?.ToString();
 
                     MusteriBilgileri form2 = new MusteriBilgileri(Id);
                     form2.FormClosed += new FormClosedEventHandler(MusteriBilgileri_FormClosed);
@@ -134,6 +133,59 @@ namespace AlanyaMedicalHelp
         private void MusteriBilgileri_FormClosed(object sender, FormClosedEventArgs e)
         {
             Listele();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked)
+            {
+                var values = _dbContext.Customer
+    .Where(x => x.Payment.Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price) != 0 &&
+                x.Payment.Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price) != null)
+    .Select(x => new
+    {
+        x.Id,
+        x.Name,
+        x.Mail,
+        x.Phone,
+        CustomerPayment = x.Payment.Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price),
+        x.Country,
+        AppointmentDate = x.Appointment.OrderByDescending(a => a.AppointmentDate).FirstOrDefault().AppointmentDate,
+        x.CreateDate,
+    }).ToList();
+                dataGridView1.DataSource = values;
+            }
+            else
+            {
+                Listele();
+            }
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked)
+            {
+                var values = _dbContext.Customer
+    .Where(x => x.Payment.Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price) == null ||
+                x.Payment.Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price) == 0)
+    .Select(x => new
+    {
+        x.Id,
+        x.Name,
+        x.Mail,
+        x.Phone,
+        CustomerPayment = x.Payment.Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price),
+        x.Country,
+        AppointmentDate = x.Appointment.OrderByDescending(a => a.AppointmentDate).FirstOrDefault().AppointmentDate,
+        x.CreateDate,
+    }).ToList();
+                dataGridView1.DataSource = values;
+            }
+            else
+            {
+                Listele();
+            }
+            
         }
     }
 }

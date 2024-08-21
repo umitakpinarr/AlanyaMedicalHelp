@@ -34,7 +34,6 @@ namespace AlanyaMedicalHelp
             MusteriMail.Text = "";
             MusteriTel.Text = "";
             MusteriUlke.Text = "";
-            MusteriAdres.Text = "";
             pictureBox2.ImageLocation = string.Empty;
             pictureBox2.Image = null;
         }
@@ -43,7 +42,7 @@ namespace AlanyaMedicalHelp
         {
             Customer customer = new Customer
             {
-                Name = musteriAdi.Text, Adress = MusteriAdres.Text, Country = MusteriUlke.Text, CreateDate = DateTime.Now, Mail = MusteriMail.Text, Phone = MusteriTel.Text, Visible = true, Image = selectedFilePath
+                Name = musteriAdi.Text, Country = MusteriUlke.Text, CreateDate = DateTime.Now, Mail = MusteriMail.Text, Phone = MusteriTel.Text, Visible = true, Image = selectedFilePath
             };
             _dbContext.Customer.Add(customer);
             _dbContext.SaveChanges();

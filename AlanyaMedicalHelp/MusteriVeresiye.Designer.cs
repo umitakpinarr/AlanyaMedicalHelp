@@ -33,9 +33,7 @@
             this.musteriId = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.MusteriAdres = new System.Windows.Forms.Label();
             this.musteriAdi = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.MusteriUlke = new System.Windows.Forms.Label();
             this.musteriMail = new System.Windows.Forms.Label();
@@ -71,9 +69,7 @@
             this.groupBox1.Controls.Add(this.musteriId);
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.MusteriAdres);
             this.groupBox1.Controls.Add(this.musteriAdi);
-            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.MusteriUlke);
             this.groupBox1.Controls.Add(this.musteriMail);
@@ -119,16 +115,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Adı Soyadı :";
             // 
-            // MusteriAdres
-            // 
-            this.MusteriAdres.AutoSize = true;
-            this.MusteriAdres.Location = new System.Drawing.Point(131, 158);
-            this.MusteriAdres.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.MusteriAdres.Name = "MusteriAdres";
-            this.MusteriAdres.Size = new System.Drawing.Size(390, 17);
-            this.MusteriAdres.TabIndex = 9;
-            this.MusteriAdres.Text = "Mahmutlar mahallesi 204. sokak yeşilköy sitesi c blok kat:2 daire:8";
-            // 
             // musteriAdi
             // 
             this.musteriAdi.AutoSize = true;
@@ -138,16 +124,6 @@
             this.musteriAdi.Size = new System.Drawing.Size(83, 17);
             this.musteriAdi.TabIndex = 1;
             this.musteriAdi.Text = "Ümit Akpınar";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(76, 158);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(49, 17);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "Adres :";
             // 
             // label3
             // 
@@ -445,9 +421,7 @@
         private System.Windows.Forms.Label musteriId;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label MusteriAdres;
         private System.Windows.Forms.Label musteriAdi;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label MusteriUlke;
         private System.Windows.Forms.Label musteriMail;

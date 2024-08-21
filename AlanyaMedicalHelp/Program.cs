@@ -41,6 +41,8 @@ namespace AlanyaMedicalHelp
             container.Register<FirmaEkle>(Lifestyle.Singleton);
             container.Register<GunlukRandevular>(Lifestyle.Singleton);
             container.Register<StokUyari>(Lifestyle.Singleton);
+            container.Register<Randevular>(Lifestyle.Singleton);
+            container.Register<SigortaIslemleri>(Lifestyle.Singleton);
 
             // Container doğrulaması
             container.Verify();

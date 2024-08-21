@@ -20,8 +20,10 @@ namespace AlanyaMedicalHelp
         private readonly FirmaListele _firmaListele;
         private readonly GunlukRandevular _gunlukRandevular;
         private readonly StokUyari _stokUyari;
+        private readonly Randevular _randevular;
+        private readonly SigortaIslemleri _sigortaIslemleri;
 
-        public Form1(MusteriListeleme musteriListeleme, MusteriEkleme musteriEkleme, StokEkleme stokEkleme, StokListeleme stokListeleme, FirmaEkle firmaEkle, FirmaListele firmaListele, GunlukRandevular gunlukRandevular, StokUyari stokUyari)
+        public Form1(MusteriListeleme musteriListeleme, MusteriEkleme musteriEkleme, StokEkleme stokEkleme, StokListeleme stokListeleme, FirmaEkle firmaEkle, FirmaListele firmaListele, GunlukRandevular gunlukRandevular, StokUyari stokUyari, Randevular randevular, SigortaIslemleri sigortaIslemleri)
         {
             InitializeComponent();
             _musteriListeleme = musteriListeleme;
@@ -32,6 +34,8 @@ namespace AlanyaMedicalHelp
             _firmaListele = firmaListele;
             _gunlukRandevular = gunlukRandevular;
             _stokUyari = stokUyari;
+            _randevular = randevular;
+            _sigortaIslemleri = sigortaIslemleri;
         }
 
        
@@ -127,6 +131,29 @@ namespace AlanyaMedicalHelp
 
             // Ana panelin içine kontrolü ekle
             panel1.Controls.Add(_stokUyari);
+        }
+
+        private void randevularToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+
+            // Yeni CustomerOperationsControl'ü oluştur ve contentPanel'e ekle
+            _randevular.Dock = DockStyle.Fill;
+
+            // Ana panelin içine kontrolü ekle
+            panel1.Controls.Add(_randevular);
+        }
+
+        private void ödenmeyenSigortalarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+
+            // Yeni CustomerOperationsControl'ü oluştur ve contentPanel'e ekle
+            _sigortaIslemleri.Dock = DockStyle.Fill;
+            _sigortaIslemleri.Listele();
+
+            // Ana panelin içine kontrolü ekle
+            panel1.Controls.Add(_sigortaIslemleri);
         }
     }
 }

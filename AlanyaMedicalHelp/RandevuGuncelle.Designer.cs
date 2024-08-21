@@ -48,7 +48,6 @@
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.MusteriAdres = new System.Windows.Forms.Label();
             this.musteriAdi = new System.Windows.Forms.Label();
             this.MusteriUlke = new System.Windows.Forms.Label();
             this.musteriMail = new System.Windows.Forms.Label();
@@ -56,7 +55,6 @@
             this.randevuId = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -264,12 +262,12 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(91, 95);
+            this.label12.Location = new System.Drawing.Point(63, 95);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(37, 17);
+            this.label12.Size = new System.Drawing.Size(62, 17);
             this.label12.TabIndex = 13;
-            this.label12.Text = "Not :";
+            this.label12.Text = "Öneriler :";
             // 
             // richTextBox1
             // 
@@ -283,16 +281,15 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(43, 387);
+            this.label13.Location = new System.Drawing.Point(69, 386);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(83, 17);
+            this.label13.Size = new System.Drawing.Size(56, 17);
             this.label13.TabIndex = 14;
-            this.label13.Text = "Yapılacaklar :";
+            this.label13.Text = "Yapılan :";
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.MusteriAdres);
             this.groupBox1.Controls.Add(this.musteriAdi);
             this.groupBox1.Controls.Add(this.MusteriUlke);
             this.groupBox1.Controls.Add(this.musteriMail);
@@ -300,7 +297,6 @@
             this.groupBox1.Controls.Add(this.randevuId);
             this.groupBox1.Controls.Add(this.pictureBox1);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.label5);
@@ -312,16 +308,6 @@
             this.groupBox1.TabIndex = 22;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Müşteri Bilgileri";
-            // 
-            // MusteriAdres
-            // 
-            this.MusteriAdres.AutoSize = true;
-            this.MusteriAdres.Location = new System.Drawing.Point(125, 158);
-            this.MusteriAdres.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.MusteriAdres.Name = "MusteriAdres";
-            this.MusteriAdres.Size = new System.Drawing.Size(390, 17);
-            this.MusteriAdres.TabIndex = 29;
-            this.MusteriAdres.Text = "Mahmutlar mahallesi 204. sokak yeşilköy sitesi c blok kat:2 daire:8";
             // 
             // musteriAdi
             // 
@@ -393,16 +379,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Adı Soyadı :";
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(76, 158);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(49, 17);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "Adres :";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -469,7 +445,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label5;
@@ -479,7 +454,6 @@
         private System.Windows.Forms.NumericUpDown numericUpDown1;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label MusteriAdres;
         private System.Windows.Forms.Label musteriAdi;
         private System.Windows.Forms.Label MusteriUlke;
         private System.Windows.Forms.Label musteriMail;
