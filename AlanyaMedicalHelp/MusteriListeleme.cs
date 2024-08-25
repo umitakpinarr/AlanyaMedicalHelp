@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.Entity;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Runtime.Remoting.Contexts;
 using System.Text;
@@ -29,80 +30,117 @@ namespace AlanyaMedicalHelp
         private void MusteriListeleme_Load(object sender, EventArgs e)
         {
             Listele();
+            dataGridView1.Scroll += dataGridView1_Scroll;
         }
+        int pageSize = 100;
+        int pageNumber = 1;
+        bool isLoading = false;
 
-        public void Listele(string name = null)
+        public void Listele(string name = null, int pageNumber = 1)
         {
             if (this.InvokeRequired)
             {
-                this.Invoke(new Action<string>(Listele), name);
+                this.Invoke(new Action<string, int>(Listele), name, pageNumber);
                 return;
             }
 
             using (var dbContext = new AlanyaMedicalHelpEntities())
             {
-                if (name != null && !String.IsNullOrEmpty(name))
+                var query = dbContext.Customer.AsQueryable();
+
+                if (!string.IsNullOrEmpty(name))
                 {
-                    var values = dbContext.Customer.Where(x => x.Name.Contains(name)).Select(x => new
+                    query = query.Where(x => x.Name.Contains(name));
+                }
+
+                var newValues = query
+                    .Select(x => new
                     {
                         x.Id,
                         x.Name,
                         x.Mail,
                         x.Phone,
-                        CustomerPayment = x.Payment.Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price),
+                        BorcTl = x.Payment.Where(c => c.PriceType == 1).Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price),
+                        BorcEur = x.Payment.Where(c => c.PriceType == 2).Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price),
+                        BorcUsd = x.Payment.Where(c => c.PriceType == 3).Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price),
                         x.Country,
-                        AppointmentDate = x.Appointment.OrderByDescending(a => a.AppointmentDate).FirstOrDefault().AppointmentDate,
+                        // Use FirstOrDefault to retrieve the appointment date safely
+                        AppointmentDate = x.Appointment.OrderByDescending(a => a.AppointmentDate).Select(a => a.AppointmentDate).FirstOrDefault(),
                         x.CreateDate,
+                    })
+                    .GroupBy(x => x.Id)  // Group by ID to ensure unique results
+                    .Select(g => g.FirstOrDefault())  // Get the first entry from each group
+                    .OrderByDescending(x => x.AppointmentDate)
+                    .Skip((pageNumber - 1) * pageSize)
+                    .Take(pageSize)
+                    .ToList();  // Remove dynamic to avoid issues
 
-                    }).OrderByDescending(x=> x.AppointmentDate).ToList();
-                    dataGridView1.DataSource = values;
-                    dataGridView1.Columns["Name"].HeaderText = "Müşteri Adı Soyadı";
-                    dataGridView1.Columns["Mail"].HeaderText = "Müşteri Mail";
-                    dataGridView1.Columns["Phone"].HeaderText = "Müşteri Telefon";
-                    dataGridView1.Columns["CustomerPayment"].HeaderText = "Borç";
-                    dataGridView1.Columns["Image"].HeaderText = "Resim Yolu";
-                    dataGridView1.Columns["Country"].HeaderText = "Müşteri Ülke";
-                    dataGridView1.Columns["AppointmentDate"].HeaderText = "Son Randevu Tarihi";
-                    dataGridView1.Columns["CreateDate"].HeaderText = "Oluşturulma Tarihi";
-                    dataGridView1.Columns["Id"].Visible = false;
+               if (pageNumber == 1)
+                {
+                    // For the first page, create a new BindingList
+                    dataGridView1.DataSource = new BindingList<object>(newValues.Cast<object>().ToList());
                 }
                 else
                 {
-                    var values = dbContext.Customer
-     .Select(x => new
-     {
-         x.Id,
-         x.Name,
-         x.Mail,
-         x.Phone,
-         CustomerPayment = x.Payment.Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price),
-         x.Country,
-         AppointmentDate = x.Appointment.OrderByDescending(a => a.AppointmentDate).FirstOrDefault().AppointmentDate,
-         x.CreateDate,
-     })
-     .OrderByDescending(x => x.AppointmentDate).ToList();
+                    // For subsequent pages, add new items to the existing BindingList
+                    var bindingList = (BindingList<object>)dataGridView1.DataSource;
 
-                    dataGridView1.DataSource = values;
-                    dataGridView1.Columns["Name"].HeaderText = "Müşteri Adı Soyadı";
-                    dataGridView1.Columns["Mail"].HeaderText = "Müşteri Mail";
-                    dataGridView1.Columns["Phone"].HeaderText = "Müşteri Telefon";
-                    dataGridView1.Columns["CustomerPayment"].HeaderText = "Borç";
-                    dataGridView1.Columns["Country"].HeaderText = "Müşteri Ülke";
-                    dataGridView1.Columns["AppointmentDate"].HeaderText = "Son Randevu Tarihi";
+                    // Get existing IDs to prevent duplicates
+                    var existingIds = bindingList.Select(item => ((dynamic)item).Id).ToHashSet();
 
-                    dataGridView1.Columns["CreateDate"].HeaderText = "Oluşturulma Tarihi";
-                    dataGridView1.Columns["Id"].Visible = false;
+                    // Add only new items
+                    foreach (var item in newValues)
+                    {
+                        if (!existingIds.Contains(((dynamic)item).Id))
+                        {
+                            bindingList.Add(item);
+                            existingIds.Add(((dynamic)item).Id);  // Add ID to existing IDs to track duplicates
+                        }
+                    }
                 }
 
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                SetDataGridViewHeaders();
+            }
+
+
+
+        }
+
+        private void dataGridView1_Scroll(object sender, ScrollEventArgs e)
+        {
+            if (isLoading || e.ScrollOrientation != ScrollOrientation.VerticalScroll) return;
+
+            if (dataGridView1.Rows.Count > 0 &&
+                dataGridView1.FirstDisplayedScrollingRowIndex + dataGridView1.DisplayedRowCount(false) >= dataGridView1.Rows.Count)
+            {
+                // Alt kısma ulaşıldığında bir sonraki sayfayı yükle
+                pageNumber++;
+                Listele(null, pageNumber);
             }
         }
 
 
+
+
+        private void SetDataGridViewHeaders()
+        {
+            dataGridView1.Columns["Name"].HeaderText = "Müşteri Adı Soyadı";
+            dataGridView1.Columns["Mail"].HeaderText = "Müşteri Mail";
+            dataGridView1.Columns["Phone"].HeaderText = "Müşteri Telefon";
+            dataGridView1.Columns["BorcTl"].HeaderText = "TL Borç";
+            dataGridView1.Columns["BorcEur"].HeaderText = "Borç Eur";
+            dataGridView1.Columns["BorcUsd"].HeaderText = "Borç Usd";
+
+            dataGridView1.Columns["Country"].HeaderText = "Müşteri Ülke";
+            dataGridView1.Columns["AppointmentDate"].HeaderText = "Son Randevu Tarihi";
+            dataGridView1.Columns["CreateDate"].HeaderText = "Oluşturulma Tarihi";
+            dataGridView1.Columns["Id"].Visible = false;
+        }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            Listele(textBox1.Text);
+            Listele(textBox1.Text, 1);
         }
 
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -132,7 +170,7 @@ namespace AlanyaMedicalHelp
 
         private void MusteriBilgileri_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Listele();
+            Listele(null, 1);
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -140,24 +178,46 @@ namespace AlanyaMedicalHelp
             if (checkBox1.Checked)
             {
                 var values = _dbContext.Customer
-    .Where(x => x.Payment.Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price) != 0 &&
-                x.Payment.Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price) != null)
+    .Where(x =>
+        x.Payment
+            .Where(ss => ss.PaymentStatus == false)
+            .Sum(ss =>
+                ss.PriceType == 1 ? ss.Price :
+                ss.PriceType == 2 ? ss.Price :
+                ss.PriceType == 3 ? ss.Price : 0
+            ) > 0
+    )
     .Select(x => new
     {
         x.Id,
         x.Name,
         x.Mail,
         x.Phone,
-        CustomerPayment = x.Payment.Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price),
+        BorcTl = x.Payment
+            .Where(c => c.PriceType == 1 && c.PaymentStatus == false)
+            .Sum(ss => ss.Price),
+        BorcEur = x.Payment
+            .Where(c => c.PriceType == 2 && c.PaymentStatus == false)
+            .Sum(ss => ss.Price),
+        BorcUsd = x.Payment
+            .Where(c => c.PriceType == 3 && c.PaymentStatus == false)
+            .Sum(ss => ss.Price),
         x.Country,
-        AppointmentDate = x.Appointment.OrderByDescending(a => a.AppointmentDate).FirstOrDefault().AppointmentDate,
+        AppointmentDate = x.Appointment
+            .OrderByDescending(a => a.AppointmentDate)
+            .Select(a => a.AppointmentDate)
+            .FirstOrDefault(),
         x.CreateDate,
-    }).ToList();
+    })
+    .Where(x => x.BorcTl > 0 || x.BorcEur > 0 || x.BorcUsd > 0) // Filtreleme
+    .OrderByDescending(x => x.AppointmentDate)
+    .ToList();
+
                 dataGridView1.DataSource = values;
             }
             else
             {
-                Listele();
+                Listele(null, 1);
             }
         }
 
@@ -165,25 +225,57 @@ namespace AlanyaMedicalHelp
         {
             if (checkBox2.Checked)
             {
-                var values = _dbContext.Customer
-    .Where(x => x.Payment.Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price) == null ||
-                x.Payment.Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price) == 0)
+               var values = _dbContext.Customer
+    .Where(x =>
+        (x.Payment
+            .Where(c => c.PriceType == 1 && c.PaymentStatus == false)
+            .Sum(ss => ss.Price) == 0 ||
+         x.Payment
+            .Where(c => c.PriceType == 1 && c.PaymentStatus == false)
+            .Sum(ss => ss.Price) == null) &&
+        (x.Payment
+            .Where(c => c.PriceType == 2 && c.PaymentStatus == false)
+            .Sum(ss => ss.Price) == 0 ||
+         x.Payment
+            .Where(c => c.PriceType == 2 && c.PaymentStatus == false)
+            .Sum(ss => ss.Price) == null) &&
+        (x.Payment
+            .Where(c => c.PriceType == 3 && c.PaymentStatus == false)
+            .Sum(ss => ss.Price) == 0 ||
+         x.Payment
+            .Where(c => c.PriceType == 3 && c.PaymentStatus == false)
+            .Sum(ss => ss.Price) == null)
+    )
     .Select(x => new
     {
         x.Id,
         x.Name,
         x.Mail,
         x.Phone,
-        CustomerPayment = x.Payment.Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price),
+        BorcTl = x.Payment
+            .Where(c => c.PriceType == 1 && c.PaymentStatus == false)
+            .Sum(ss => ss.Price),
+        BorcEur = x.Payment
+            .Where(c => c.PriceType == 2 && c.PaymentStatus == false)
+            .Sum(ss => ss.Price),
+        BorcUsd = x.Payment
+            .Where(c => c.PriceType == 3 && c.PaymentStatus == false)
+            .Sum(ss => ss.Price),
         x.Country,
-        AppointmentDate = x.Appointment.OrderByDescending(a => a.AppointmentDate).FirstOrDefault().AppointmentDate,
+        AppointmentDate = x.Appointment
+            .OrderByDescending(a => a.AppointmentDate)
+            .Select(a => a.AppointmentDate)
+            .FirstOrDefault(),
         x.CreateDate,
-    }).ToList();
+    })
+    .ToList();
+
+
                 dataGridView1.DataSource = values;
             }
             else
             {
-                Listele();
+                Listele(null, 1);
             }
             
         }

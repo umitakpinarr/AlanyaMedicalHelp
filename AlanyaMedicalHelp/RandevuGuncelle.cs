@@ -151,6 +151,12 @@ namespace AlanyaMedicalHelp
                 _dbContext.Payment.Add(payment);
                 _dbContext.SaveChanges();
             }
+            else if(values.Payment.Where(x => x.AppointmentId == values.Id).Any() == true && paymentType != 0)
+            {
+                var values2 = _dbContext.Payment.Where(x => x.AppointmentId == convertAppointmentId).FirstOrDefault();
+                _dbContext.Payment.Remove(values2);
+                _dbContext.SaveChanges();
+            }
 
             _dbContext.Appointment.AddOrUpdate(values);
             _dbContext.SaveChanges();

@@ -29,7 +29,7 @@ namespace AlanyaMedicalHelp
         public void Listele()
         {
             var filteredData = _dbContext.Stock
-    .Where(x => x.StockCount.Sum(ss => ss.Type == 1 ? ss.Count : -ss.Count) < x.AlertCount)
+    .Where(x => x.StockCount.Sum(ss => ss.Type == 1 ? ss.Count : -ss.Count) <= x.AlertCount)
     .Select(x => new
     {
         x.Id,

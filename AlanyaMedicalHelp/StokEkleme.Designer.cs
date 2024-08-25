@@ -151,12 +151,12 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(97, 226);
+            this.label5.Location = new System.Drawing.Point(109, 225);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 17);
+            this.label5.Size = new System.Drawing.Size(66, 17);
             this.label5.TabIndex = 10;
-            this.label5.Text = "Description :";
+            this.label5.Text = "Açıklama :";
             // 
             // StokEkleme
             // 

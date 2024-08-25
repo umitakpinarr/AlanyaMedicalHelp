@@ -49,8 +49,8 @@ namespace AlanyaMedicalHelp
 
                 dataGridView1.Columns["Id"].HeaderText = "ID";
                 dataGridView1.Columns["Name"].HeaderText = "Müşteri Adı";
-                dataGridView1.Columns["Descriptions"].HeaderText = "Açıklama";
-                dataGridView1.Columns["Note"].HeaderText = "Not";
+                dataGridView1.Columns["Descriptions"].HeaderText = "Yapılan";
+                dataGridView1.Columns["Note"].HeaderText = "Öneriler";
                 dataGridView1.Columns["PaymentStatus"].HeaderText = "Ödeme Durumu";
                 dataGridView1.Columns["PaymentType"].HeaderText = "Ödeme Türü";
                 dataGridView1.Columns["AppointmentDate"].HeaderText = "Randevu Tarihi";

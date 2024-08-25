@@ -18,13 +18,13 @@ namespace AlanyaMedicalHelp
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public void Listele()
         {
             using (var dbContext = new AlanyaMedicalHelpEntities())
             {
 
-                var convertToStartDate = dateTimePicker1.Value;
-                var convertToEndDate = dateTimePicker2.Value;
+                var convertToStartDate = dateTimePicker1.Value.Date;
+                var convertToEndDate = dateTimePicker2.Value.Date.AddDays(1);
                 var values = dbContext.Appointment.Where(x => x.AppointmentDate >= convertToStartDate && x.AppointmentDate <= convertToEndDate).Select(x => new
                 {
                     x.Id,
@@ -52,9 +52,44 @@ namespace AlanyaMedicalHelp
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Listele();
+        }
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                // Eğer tıklanan satır geçerli bir satırsa
+                if (e.RowIndex >= 0)
+                {
+                    var selectedRow = dataGridView1.Rows[e.RowIndex];
+
+                    string Id = selectedRow.Cells["Id"].Value?.ToString() ?? string.Empty;
+
+
+
+                    RandevuGuncelle form2 = new RandevuGuncelle(Id);
+                    form2.FormClosed += new FormClosedEventHandler(RandvuGuncelle_FormClosed);
+                    form2.Show();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Bir hata oluştu: " + ex.Message);
+            }
+        }
+
+        private void RandvuGuncelle_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Listele();
         }
     }
 }

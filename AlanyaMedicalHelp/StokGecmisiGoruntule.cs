@@ -102,7 +102,7 @@ namespace AlanyaMedicalHelp
         private void button1_Click(object sender, EventArgs e)
         {
             var convertToStartDate = dateTimePicker3.Value.Date;
-            var convertToEndDate = dateTimePicker4.Value.Date;
+            var convertToEndDate = dateTimePicker4.Value.Date.AddDays(1);
             if (checkBox1.Checked)
             {
                 var convertStockId = Convert.ToInt32(stokId.Text);
