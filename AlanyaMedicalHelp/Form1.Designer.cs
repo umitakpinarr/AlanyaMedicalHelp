@@ -42,8 +42,9 @@
             this.stokEklemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stokGörüntülemeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.stokUyarıToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.ödenmeyenSigortalarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.yedekAlToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,7 +57,8 @@
             this.firmaİşlemleriToolStripMenuItem,
             this.stokİşlemleriToolStripMenuItem,
             this.stokUyarıToolStripMenuItem,
-            this.ödenmeyenSigortalarToolStripMenuItem});
+            this.ödenmeyenSigortalarToolStripMenuItem,
+            this.yedekAlToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 3, 0, 3);
@@ -154,14 +156,6 @@
             this.stokUyarıToolStripMenuItem.Text = "Stok Uyarı";
             this.stokUyarıToolStripMenuItem.Click += new System.EventHandler(this.stokUyarıToolStripMenuItem_Click);
             // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(0, 37);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1766, 845);
-            this.panel1.TabIndex = 1;
-            // 
             // ödenmeyenSigortalarToolStripMenuItem
             // 
             this.ödenmeyenSigortalarToolStripMenuItem.Name = "ödenmeyenSigortalarToolStripMenuItem";
@@ -169,12 +163,29 @@
             this.ödenmeyenSigortalarToolStripMenuItem.Text = "Ödenmeyen Sigortalar";
             this.ödenmeyenSigortalarToolStripMenuItem.Click += new System.EventHandler(this.ödenmeyenSigortalarToolStripMenuItem_Click);
             // 
+            // yedekAlToolStripMenuItem
+            // 
+            this.yedekAlToolStripMenuItem.Name = "yedekAlToolStripMenuItem";
+            this.yedekAlToolStripMenuItem.Size = new System.Drawing.Size(64, 19);
+            this.yedekAlToolStripMenuItem.Text = "Yedek Al";
+            this.yedekAlToolStripMenuItem.Click += new System.EventHandler(this.yedekAlToolStripMenuItem_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.AutoScroll = true;
+            this.panel1.Location = new System.Drawing.Point(0, 29);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1766, 845);
+            this.panel1.TabIndex = 1;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
-            this.ClientSize = new System.Drawing.Size(1766, 883);
+            this.ClientSize = new System.Drawing.Size(1370, 749);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F);
@@ -207,6 +218,7 @@
         private System.Windows.Forms.ToolStripMenuItem stokUyarıToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem randevularToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ödenmeyenSigortalarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem yedekAlToolStripMenuItem;
     }
 }
 

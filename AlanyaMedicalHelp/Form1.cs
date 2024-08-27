@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Entity;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace AlanyaMedicalHelp
 {
@@ -22,8 +24,9 @@ namespace AlanyaMedicalHelp
         private readonly StokUyari _stokUyari;
         private readonly Randevular _randevular;
         private readonly SigortaIslemleri _sigortaIslemleri;
+        private readonly YedekAl _yedekAl;
 
-        public Form1(MusteriListeleme musteriListeleme, MusteriEkleme musteriEkleme, StokEkleme stokEkleme, StokListeleme stokListeleme, FirmaEkle firmaEkle, FirmaListele firmaListele, GunlukRandevular gunlukRandevular, StokUyari stokUyari, Randevular randevular, SigortaIslemleri sigortaIslemleri)
+        public Form1(MusteriListeleme musteriListeleme, MusteriEkleme musteriEkleme, StokEkleme stokEkleme, StokListeleme stokListeleme, FirmaEkle firmaEkle, FirmaListele firmaListele, GunlukRandevular gunlukRandevular, StokUyari stokUyari, Randevular randevular, SigortaIslemleri sigortaIslemleri, YedekAl yedekAl)
         {
             InitializeComponent();
             _musteriListeleme = musteriListeleme;
@@ -36,6 +39,7 @@ namespace AlanyaMedicalHelp
             _stokUyari = stokUyari;
             _randevular = randevular;
             _sigortaIslemleri = sigortaIslemleri;
+            _yedekAl = yedekAl;
         }
 
        
@@ -155,5 +159,18 @@ namespace AlanyaMedicalHelp
             // Ana panelin içine kontrolü ekle
             panel1.Controls.Add(_sigortaIslemleri);
         }
+
+        private void yedekAlToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+
+            // Yeni CustomerOperationsControl'ü oluştur ve contentPanel'e ekle
+            _yedekAl.Dock = DockStyle.Fill;
+
+            // Ana panelin içine kontrolü ekle
+            panel1.Controls.Add(_yedekAl);
+        }
+
+       
     }
 }

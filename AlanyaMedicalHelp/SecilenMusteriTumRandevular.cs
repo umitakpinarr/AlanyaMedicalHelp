@@ -48,7 +48,7 @@ namespace AlanyaMedicalHelp
                         x.Descriptions,
                         x.Note,
                         PaymentStatus = x.PaymentStatus == true ? "Ödendi" : x.PaymentStatus == false ? "Ödenmedi" : "Bulunamadı",  // Koşullu ifade
-                        PaymentType = x.PaymentType == 1 ? "Nakit" : x.PaymentType == 2 ? "Sigorta" : x.PaymentType == 3 ? "Kredi Kartı" : x.PaymentType == 4 ? "EFT" : "Bulunamadı",  // Koşullu ifade
+                        PaymentType = x.PaymentType == 0 ? "Veresiye" : x.PaymentType == 1 ? "Nakit" : x.PaymentType == 2 ? "Sigorta" : x.PaymentType == 3 ? "Kredi Kartı" : x.PaymentType == 4 ? "EFT" : "Bulunamadı",  // Koşullu ifade
                         x.AppointmentDate,
                         x.CreateDate,
                     }).ToList();
@@ -66,7 +66,7 @@ namespace AlanyaMedicalHelp
             x.Descriptions,
             x.Note,
             PaymentStatus = x.PaymentStatus == true ? "Ödendi" : x.PaymentStatus == false ? "Ödenmedi" : "Bulunamadı",  // Koşullu ifade
-            PaymentType = x.PaymentType == 1 ? "Nakit" : x.PaymentType == 2 ? "Sigorta" : x.PaymentType == 3 ? "Kredi Kartı" : x.PaymentType == 4 ? "EFT" : "Bulunamadı",  // Koşullu ifade
+            PaymentType = x.PaymentType == 0 ? "Veresiye" : x.PaymentType == 1 ? "Nakit" : x.PaymentType == 2 ? "Sigorta" : x.PaymentType == 3 ? "Kredi Kartı" : x.PaymentType == 4 ? "EFT" : "Bulunamadı",  // Koşullu ifade
             x.AppointmentDate,
             x.CreateDate,
         }).ToList();

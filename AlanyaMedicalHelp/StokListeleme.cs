@@ -65,17 +65,18 @@ namespace AlanyaMedicalHelp
                     dataGridView1.DataSource = values;
                 }
 
-                dataGridView1.Columns["Id"].HeaderText = "ID";
-                dataGridView1.Columns["Name"].HeaderText = "Stok Adı";
-                dataGridView1.Columns["Count"].HeaderText = "Stok Sayısı";
-                dataGridView1.Columns["AlertCount"].HeaderText = "Uyarı Sayısı";
-                dataGridView1.Columns["Description"].HeaderText = "Açıklama";
-                dataGridView1.Columns["CreateDate"].HeaderText = "Oluşturulma Tarihi";
-                dataGridView1.Columns["Id"].Visible = false;
-
-                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+               
             }
+            dataGridView1.Columns["Id"].HeaderText = "ID";
+            dataGridView1.Columns["Name"].HeaderText = "Stok Adı";
+            dataGridView1.Columns["Count"].HeaderText = "Stok Sayısı";
+            dataGridView1.Columns["AlertCount"].HeaderText = "Uyarı Sayısı";
+            dataGridView1.Columns["Description"].HeaderText = "Açıklama";
+            dataGridView1.Columns["CreateDate"].HeaderText = "Oluşturulma Tarihi";
+            dataGridView1.Columns["Id"].Visible = false;
+
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
 
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)

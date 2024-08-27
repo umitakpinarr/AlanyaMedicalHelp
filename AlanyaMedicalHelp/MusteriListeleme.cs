@@ -101,7 +101,11 @@ namespace AlanyaMedicalHelp
 
                 dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-                SetDataGridViewHeaders();
+                if(newValues != null && newValues.Count != 0)
+                {
+                    SetDataGridViewHeaders();
+
+                }
             }
 
 
@@ -117,7 +121,14 @@ namespace AlanyaMedicalHelp
             {
                 // Alt kısma ulaşıldığında bir sonraki sayfayı yükle
                 pageNumber++;
-                Listele(null, pageNumber);
+                if(checkBox1.Checked || checkBox2.Checked)
+                {
+
+                }
+                else
+                {
+                    Listele(null, pageNumber);
+                }
             }
         }
 
@@ -178,40 +189,40 @@ namespace AlanyaMedicalHelp
             if (checkBox1.Checked)
             {
                 var values = _dbContext.Customer
-    .Where(x =>
-        x.Payment
-            .Where(ss => ss.PaymentStatus == false)
-            .Sum(ss =>
-                ss.PriceType == 1 ? ss.Price :
-                ss.PriceType == 2 ? ss.Price :
-                ss.PriceType == 3 ? ss.Price : 0
-            ) > 0
-    )
-    .Select(x => new
-    {
-        x.Id,
-        x.Name,
-        x.Mail,
-        x.Phone,
-        BorcTl = x.Payment
-            .Where(c => c.PriceType == 1 && c.PaymentStatus == false)
-            .Sum(ss => ss.Price),
-        BorcEur = x.Payment
-            .Where(c => c.PriceType == 2 && c.PaymentStatus == false)
-            .Sum(ss => ss.Price),
-        BorcUsd = x.Payment
-            .Where(c => c.PriceType == 3 && c.PaymentStatus == false)
-            .Sum(ss => ss.Price),
-        x.Country,
-        AppointmentDate = x.Appointment
-            .OrderByDescending(a => a.AppointmentDate)
-            .Select(a => a.AppointmentDate)
-            .FirstOrDefault(),
-        x.CreateDate,
-    })
-    .Where(x => x.BorcTl > 0 || x.BorcEur > 0 || x.BorcUsd > 0) // Filtreleme
-    .OrderByDescending(x => x.AppointmentDate)
-    .ToList();
+     .Where(x =>
+         x.Payment
+             .Any(ss =>
+                 ss.PriceType == 1 && ss.PaymentStatus == false && ss.Price > 0 ||
+                 ss.PriceType == 2 && ss.PaymentStatus == false && ss.Price > 0 ||
+                 ss.PriceType == 3 && ss.PaymentStatus == false && ss.Price > 0
+             )
+     )
+     .Select(x => new
+     {
+         x.Id,
+         x.Name,
+         x.Mail,
+         x.Phone,
+         BorcTl = x.Payment
+             .Where(c => c.PriceType == 1)
+             .Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price),
+         BorcEur = x.Payment
+             .Where(c => c.PriceType == 2)
+             .Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price),
+         BorcUsd = x.Payment
+             .Where(c => c.PriceType == 3)
+             .Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price),
+         x.Country,
+         AppointmentDate = x.Appointment
+             .OrderByDescending(a => a.AppointmentDate)
+             .Select(a => a.AppointmentDate)
+             .FirstOrDefault(),
+         x.CreateDate,
+     })
+     .Where(x => x.BorcTl > 0 || x.BorcEur > 0 || x.BorcUsd > 0) // Filtreleme
+     .OrderByDescending(x => x.AppointmentDate)
+     .ToList();
+
 
                 dataGridView1.DataSource = values;
             }
@@ -219,6 +230,7 @@ namespace AlanyaMedicalHelp
             {
                 Listele(null, 1);
             }
+            SetDataGridViewHeaders();
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
@@ -253,14 +265,14 @@ namespace AlanyaMedicalHelp
         x.Mail,
         x.Phone,
         BorcTl = x.Payment
-            .Where(c => c.PriceType == 1 && c.PaymentStatus == false)
-            .Sum(ss => ss.Price),
+             .Where(c => c.PriceType == 1)
+             .Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price),
         BorcEur = x.Payment
-            .Where(c => c.PriceType == 2 && c.PaymentStatus == false)
-            .Sum(ss => ss.Price),
+             .Where(c => c.PriceType == 2)
+             .Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price),
         BorcUsd = x.Payment
-            .Where(c => c.PriceType == 3 && c.PaymentStatus == false)
-            .Sum(ss => ss.Price),
+             .Where(c => c.PriceType == 3)
+             .Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price),
         x.Country,
         AppointmentDate = x.Appointment
             .OrderByDescending(a => a.AppointmentDate)
@@ -268,6 +280,7 @@ namespace AlanyaMedicalHelp
             .FirstOrDefault(),
         x.CreateDate,
     })
+    .OrderByDescending(x => x.AppointmentDate)
     .ToList();
 
 
@@ -277,7 +290,7 @@ namespace AlanyaMedicalHelp
             {
                 Listele(null, 1);
             }
-            
+            SetDataGridViewHeaders();
         }
     }
 }

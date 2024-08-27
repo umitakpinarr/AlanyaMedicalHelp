@@ -267,6 +267,18 @@
     <Compile Include="sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="VeresiyeGuncelleme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VeresiyeGuncelleme.Designer.cs">
+      <DependentUpon>VeresiyeGuncelleme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="YedekAl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="YedekAl.Designer.cs">
+      <DependentUpon>YedekAl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="FirmaBilgileri.resx">
       <DependentUpon>FirmaBilgileri.cs</DependentUpon>
     </EmbeddedResource>
@@ -356,6 +368,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StokUyari.resx">
       <DependentUpon>StokUyari.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VeresiyeGuncelleme.resx">
+      <DependentUpon>VeresiyeGuncelleme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="YedekAl.resx">
+      <DependentUpon>YedekAl.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

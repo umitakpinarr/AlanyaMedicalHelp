@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace AlanyaMedicalHelp
 {
@@ -28,23 +29,33 @@ namespace AlanyaMedicalHelp
 
         private void Listele()
         {
-            int convertCustomerId = Convert.ToInt32(musteriId.Text);
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(Listele));
+                return;
+            }
 
-            var values = _dbContext.Payment.Where(x => x.MusteriId == convertCustomerId)
-                .Select(x => new
-                {
-                    x.Id,
-                    AppointmentDesc = x.Appointment.Descriptions,
-                    x.Price,
-                    PriceType = x.PriceType == 1 ? "TL" : x.PriceType == 2 ? "EUR" : "USD",
-                    PaymentStatus = x.PaymentStatus == true ? "Ödendi" : x.PaymentStatus == false ? "Ödenmedi" : "Bulunamadı",  // Koşullu ifadei,
-                    x.CreateDate
-                })
-                .ToList();
-            dataGridView1.DataSource = values;
-            label7.Text = values.Where(x => x.PriceType == "TL").Sum(ss => ss.PaymentStatus == "Ödenmedi" ? ss.Price : -ss.Price).ToString();
-            label11.Text = values.Where(x => x.PriceType == "EUR").Sum(ss => ss.PaymentStatus == "Ödenmedi" ? ss.Price : -ss.Price).ToString();
-            label13.Text = values.Where(x => x.PriceType == "USD").Sum(ss => ss.PaymentStatus == "Ödenmedi" ? ss.Price : -ss.Price).ToString();
+            using (var dbContext = new AlanyaMedicalHelpEntities())
+            {
+                int convertCustomerId = Convert.ToInt32(musteriId.Text);
+
+                var values = dbContext.Payment.Where(x => x.MusteriId == convertCustomerId)
+                    .Select(x => new
+                    {
+                        x.Id,
+                        AppointmentDesc = x.Description,
+                        x.Price,
+                        PriceType = x.PriceType == 1 ? "TL" : x.PriceType == 2 ? "EUR" : "USD",
+                        PaymentStatus = x.PaymentStatus == true ? "Ödendi" : x.PaymentStatus == false ? "Ödenmedi" : "Bulunamadı",  // Koşullu ifadei,
+                        x.CreateDate
+                    })
+                    .ToList();
+                dataGridView1.DataSource = values;
+                label7.Text = values.Where(x => x.PriceType == "TL").Sum(ss => ss.PaymentStatus == "Ödenmedi" ? ss.Price : -ss.Price).ToString();
+                label11.Text = values.Where(x => x.PriceType == "EUR").Sum(ss => ss.PaymentStatus == "Ödenmedi" ? ss.Price : -ss.Price).ToString();
+                label13.Text = values.Where(x => x.PriceType == "USD").Sum(ss => ss.PaymentStatus == "Ödenmedi" ? ss.Price : -ss.Price).ToString();
+               
+            }
             dataGridView1.Columns["Id"].HeaderText = "ID";
             dataGridView1.Columns["AppointmentDesc"].HeaderText = "Randevu Açıklaması";
             dataGridView1.Columns["Price"].HeaderText = "Fiyat";
@@ -54,6 +65,8 @@ namespace AlanyaMedicalHelp
             dataGridView1.Columns["Id"].Visible = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+
         }
 
         private void Temizle()
@@ -85,6 +98,7 @@ namespace AlanyaMedicalHelp
                 PaymentType = 1,
                 Price = covnertPrice,
                 PriceType = priceType,
+                Description = richTextBox1.Text
             };
             _dbContext.Payment.Add(payment);
             _dbContext.SaveChanges();
@@ -165,6 +179,36 @@ namespace AlanyaMedicalHelp
             dataGridView1.Columns["Price"].HeaderText = "Fiyat";
             dataGridView1.Columns["PaymentStatus"].HeaderText = "Ödeme Durumu";
             dataGridView1.Columns["CreateDate"].HeaderText = "Oluşturulma Tarihi";
+        }
+
+        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                // Eğer tıklanan satır geçerli bir satırsa
+                if (e.RowIndex >= 0)
+                {
+                    var selectedRow = dataGridView1.Rows[e.RowIndex];
+
+                    string Id = selectedRow.Cells["Id"].Value?.ToString() ?? string.Empty;
+
+
+
+                    VeresiyeGuncelleme form2 = new VeresiyeGuncelleme(Id);
+                    form2.FormClosed += new FormClosedEventHandler(MusteriVeresiyeGuncelle_FormClosed);
+                    form2.Show();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Bir hata oluştu: " + ex.Message);
+            }
+        }
+
+        private void MusteriVeresiyeGuncelle_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Listele();
         }
     }
 }

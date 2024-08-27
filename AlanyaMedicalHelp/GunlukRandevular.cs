@@ -40,29 +40,29 @@ namespace AlanyaMedicalHelp
                     x.Descriptions,
                     x.Note,
                     PaymentStatus = x.PaymentStatus == true ? "Ödendi" : x.PaymentStatus == false ? "Ödenmedi" : "Bulunamadı",  // Koşullu ifade
-                    PaymentType = x.PaymentType == 1 ? "Nakit" : x.PaymentType == 2 ? "Sigorta" : x.PaymentType == 3 ? "Kredi Kartı" : x.PaymentType == 4 ? "EFT" : "Bulunamadı",  // Koşullu ifade
+                    PaymentType = x.PaymentType == 0 ? "Veresiye" : x.PaymentType == 1 ? "Nakit" : x.PaymentType == 2 ? "Sigorta" : x.PaymentType == 3 ? "Kredi Kartı" : x.PaymentType == 4 ? "EFT" : "Bulunamadı",  // Koşullu ifade
                     AppointmentStatus = x.AppointmentStatus == true ? "Randevu tamamlandı" : "Randevu tamamlanmadı",
                     x.AppointmentDate,
                     x.CreateDate,
                 }).OrderByDescending(x => x.AppointmentDate).ToList();
                 dataGridView1.DataSource = values;
 
-                dataGridView1.Columns["Id"].HeaderText = "ID";
-                dataGridView1.Columns["Name"].HeaderText = "Müşteri Adı";
-                dataGridView1.Columns["Descriptions"].HeaderText = "Yapılan";
-                dataGridView1.Columns["Note"].HeaderText = "Öneriler";
-                dataGridView1.Columns["PaymentStatus"].HeaderText = "Ödeme Durumu";
-                dataGridView1.Columns["PaymentType"].HeaderText = "Ödeme Türü";
-                dataGridView1.Columns["AppointmentDate"].HeaderText = "Randevu Tarihi";
-                dataGridView1.Columns["AppointmentStatus"].HeaderText = "Randevu Durumu";
-                dataGridView1.Columns["CreateDate"].HeaderText = "Oluşturma Tarihi";
-                dataGridView1.Columns["Id"].Visible = false;
-                dataGridView1.Columns["AppointmentStatus"].Visible = false;
-
-                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                
             }
+            dataGridView1.Columns["Id"].HeaderText = "ID";
+            dataGridView1.Columns["Name"].HeaderText = "Müşteri Adı";
+            dataGridView1.Columns["Descriptions"].HeaderText = "Yapılan";
+            dataGridView1.Columns["Note"].HeaderText = "Öneriler";
+            dataGridView1.Columns["PaymentStatus"].HeaderText = "Ödeme Durumu";
+            dataGridView1.Columns["PaymentType"].HeaderText = "Ödeme Türü";
+            dataGridView1.Columns["AppointmentDate"].HeaderText = "Randevu Tarihi";
+            dataGridView1.Columns["AppointmentStatus"].HeaderText = "Randevu Durumu";
+            dataGridView1.Columns["CreateDate"].HeaderText = "Oluşturma Tarihi";
+            dataGridView1.Columns["Id"].Visible = false;
+            dataGridView1.Columns["AppointmentStatus"].Visible = false;
 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

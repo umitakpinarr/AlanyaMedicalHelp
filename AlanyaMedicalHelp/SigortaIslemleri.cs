@@ -45,22 +45,22 @@ namespace AlanyaMedicalHelp
                 }).OrderByDescending(x => x.AppointmentDate).ToList();
                 dataGridView1.DataSource = values;
 
-                dataGridView1.Columns["Id"].HeaderText = "ID";
-                dataGridView1.Columns["Name"].HeaderText = "Müşteri Adı";
-                dataGridView1.Columns["Descriptions"].HeaderText = "Açıklama";
-                dataGridView1.Columns["Note"].HeaderText = "Not";
-                dataGridView1.Columns["PaymentStatus"].HeaderText = "Ödeme Durumu";
-                dataGridView1.Columns["PaymentType"].HeaderText = "Ödeme Türü";
-                dataGridView1.Columns["AppointmentDate"].HeaderText = "Randevu Tarihi";
-                dataGridView1.Columns["AppointmentStatus"].HeaderText = "Randevu Durumu";
-                dataGridView1.Columns["CreateDate"].HeaderText = "Oluşturma Tarihi";
-                dataGridView1.Columns["Id"].Visible = false;
-                dataGridView1.Columns["AppointmentStatus"].Visible = false;
-
-                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+               
             }
+            dataGridView1.Columns["Id"].HeaderText = "ID";
+            dataGridView1.Columns["Name"].HeaderText = "Müşteri Adı";
+            dataGridView1.Columns["Descriptions"].HeaderText = "Açıklama";
+            dataGridView1.Columns["Note"].HeaderText = "Not";
+            dataGridView1.Columns["PaymentStatus"].HeaderText = "Ödeme Durumu";
+            dataGridView1.Columns["PaymentType"].HeaderText = "Ödeme Türü";
+            dataGridView1.Columns["AppointmentDate"].HeaderText = "Randevu Tarihi";
+            dataGridView1.Columns["AppointmentStatus"].HeaderText = "Randevu Durumu";
+            dataGridView1.Columns["CreateDate"].HeaderText = "Oluşturma Tarihi";
+            dataGridView1.Columns["Id"].Visible = false;
+            dataGridView1.Columns["AppointmentStatus"].Visible = false;
 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

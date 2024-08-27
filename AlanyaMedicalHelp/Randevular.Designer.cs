@@ -100,6 +100,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
@@ -111,6 +112,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Randevular";
             this.Size = new System.Drawing.Size(1706, 973);
+            this.Load += new System.EventHandler(this.Randevular_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -136,9 +136,9 @@
             this.label2.Location = new System.Drawing.Point(24, 84);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(106, 17);
+            this.label2.Size = new System.Drawing.Size(105, 17);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Arttırılacak Borç :";
+            this.label2.Text = "Azaltılacak Borç :";
             // 
             // groupBox1
             // 
@@ -211,6 +211,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(247)))), ((int)(((byte)(250)))));
             this.ClientSize = new System.Drawing.Size(933, 588);
             this.Controls.Add(this.groupBox2);

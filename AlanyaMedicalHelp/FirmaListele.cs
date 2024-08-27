@@ -44,14 +44,16 @@ namespace AlanyaMedicalHelp
                 })
                 .ToList();
                 dataGridView1.DataSource = values;
-                dataGridView1.Columns["Id"].HeaderText = "ID";
-                dataGridView1.Columns["Name"].HeaderText = "Firma Adı";
-                dataGridView1.Columns["Payment"].HeaderText = "Borç";
-                dataGridView1.Columns["CreateDate"].HeaderText = "Oluşturulma Tarihi";
-                dataGridView1.Columns["Id"].Visible = false;
-                dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+                
             }
+
+            dataGridView1.Columns["Id"].HeaderText = "ID";
+            dataGridView1.Columns["Name"].HeaderText = "Firma Adı";
+            dataGridView1.Columns["Payment"].HeaderText = "Borç";
+            dataGridView1.Columns["CreateDate"].HeaderText = "Oluşturulma Tarihi";
+            dataGridView1.Columns["Id"].Visible = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
         }
 
         private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)

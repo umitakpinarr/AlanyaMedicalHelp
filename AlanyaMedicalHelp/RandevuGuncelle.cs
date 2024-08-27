@@ -82,6 +82,11 @@ namespace AlanyaMedicalHelp
                 comboBox1.Text = "EFT";
 
             }
+            else if (values.PaymentType == 0)
+            {
+                comboBox1.Text = "Veresiye";
+
+            }
             pictureBox1.ImageLocation = values.Customer.Image;
             if(values.AppointmentStatus == true)
             {
@@ -128,6 +133,10 @@ namespace AlanyaMedicalHelp
                 paymentType = 4;
 
             }
+            else if(comboBox1.Text == "Veresiye")
+            {
+                paymentType = 0;
+            }
 
             
             values.Price = Convert.ToDouble(numericUpDown1.Value);
@@ -135,7 +144,7 @@ namespace AlanyaMedicalHelp
             values.PriceType = priceType;
             values.PaymentType = paymentType;
             values.AppointmentStatus = checkBox2.Checked;
-            if (values.PaymentStatus == false && values.Payment.Where(x=> x.AppointmentId == values.Id).Any() == false && paymentType == 0)
+            if (values.Payment.Where(x=> x.AppointmentId == values.Id).Any() == false && paymentType == 0)
             {
                 Payment payment = new Payment
                 {
@@ -146,7 +155,8 @@ namespace AlanyaMedicalHelp
                     PaymentType = paymentType,
                     Price = Convert.ToDouble(numericUpDown1.Value),
                     Visible = true,
-                    PriceType = priceType
+                    PriceType = priceType,
+                    Description = richTextBox2.Text
                 };
                 _dbContext.Payment.Add(payment);
                 _dbContext.SaveChanges();
@@ -155,6 +165,14 @@ namespace AlanyaMedicalHelp
             {
                 var values2 = _dbContext.Payment.Where(x => x.AppointmentId == convertAppointmentId).FirstOrDefault();
                 _dbContext.Payment.Remove(values2);
+                _dbContext.SaveChanges();
+            }
+            else if (values.Payment.Where(x => x.AppointmentId == values.Id).Any() == true && paymentType == 0)
+            {
+                var values2 = _dbContext.Payment.Where(x => x.AppointmentId == convertAppointmentId).FirstOrDefault();
+                values2.Price = Convert.ToDouble(numericUpDown1.Value);
+                values2.Description = richTextBox2.Text;
+                _dbContext.Payment.AddOrUpdate(values2);
                 _dbContext.SaveChanges();
             }
 

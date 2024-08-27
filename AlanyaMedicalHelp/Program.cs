@@ -33,6 +33,7 @@ namespace AlanyaMedicalHelp
 
             // Form ve kontrolleri kaydet
             container.Register<Form1>(Lifestyle.Singleton);
+            container.Register<YedekAl>(Lifestyle.Singleton);
             container.Register<MusteriEkleme>(Lifestyle.Singleton);
             container.Register<MusteriListeleme>(Lifestyle.Singleton);
             container.Register<StokListeleme>(Lifestyle.Singleton);
