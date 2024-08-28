@@ -43,6 +43,8 @@
             this.firmaAdi = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.firmaBorc = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -50,6 +52,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.dateTimePicker1);
+            this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.textBox1);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.button1);
@@ -68,7 +72,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(132, 42);
+            this.textBox1.Location = new System.Drawing.Point(129, 83);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(168, 25);
@@ -77,7 +81,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(21, 46);
+            this.label5.Location = new System.Drawing.Point(18, 87);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(111, 17);
@@ -89,7 +93,7 @@
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(112)))), ((int)(((byte)(67)))));
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(132, 273);
+            this.button1.Location = new System.Drawing.Point(129, 314);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(169, 30);
@@ -101,7 +105,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(61, 120);
+            this.label4.Location = new System.Drawing.Point(58, 161);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(66, 17);
@@ -110,7 +114,7 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(132, 116);
+            this.richTextBox1.Location = new System.Drawing.Point(129, 157);
             this.richTextBox1.Margin = new System.Windows.Forms.Padding(4);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(168, 147);
@@ -119,7 +123,8 @@
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(132, 81);
+            this.numericUpDown1.DecimalPlaces = 2;
+            this.numericUpDown1.Location = new System.Drawing.Point(129, 122);
             this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             9999999,
@@ -133,7 +138,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(24, 84);
+            this.label2.Location = new System.Drawing.Point(21, 125);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(105, 17);
@@ -207,6 +212,23 @@
             this.firmaBorc.TabIndex = 3;
             this.firmaBorc.Text = "umitakpinarr@icloud.com";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(86, 51);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(43, 17);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "Tarih :";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(129, 51);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 25);
+            this.dateTimePicker1.TabIndex = 8;
+            // 
             // FirmaBorcAzaltma
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -247,5 +269,7 @@
         private System.Windows.Forms.Label firmaAdi;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label firmaBorc;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

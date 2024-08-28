@@ -29,7 +29,7 @@ namespace AlanyaMedicalHelp
             CompanyPayment companyPayment = new CompanyPayment
             {
                 CompanyId = convertCompanyId,
-                CreateDate = DateTime.Now,
+                CreateDate = dateTimePicker1.Value,
                 Description = richTextBox1.Text,
                 PaymentNo = textBox1.Text,
                 Price = convertPrice,

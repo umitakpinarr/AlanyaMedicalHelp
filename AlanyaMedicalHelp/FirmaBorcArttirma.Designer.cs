@@ -186,6 +186,7 @@
             // 
             // numericUpDown1
             // 
+            this.numericUpDown1.DecimalPlaces = 2;
             this.numericUpDown1.Location = new System.Drawing.Point(132, 81);
             this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown1.Maximum = new decimal(new int[] {

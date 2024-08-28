@@ -29,6 +29,9 @@ namespace AlanyaMedicalHelp
 
         private void MusteriListeleme_Load(object sender, EventArgs e)
         {
+            checkBox1.Checked = false;
+            checkBox2.Checked = false;
+            textBox1.Text = "";
             Listele();
             dataGridView1.Scroll += dataGridView1_Scroll;
         }
@@ -121,9 +124,13 @@ namespace AlanyaMedicalHelp
             {
                 // Alt kısma ulaşıldığında bir sonraki sayfayı yükle
                 pageNumber++;
-                if(checkBox1.Checked || checkBox2.Checked)
+                if(checkBox1.Checked)
                 {
 
+                }
+                else if (checkBox2.Checked)
+                {
+                    BorcsuzListele(pageNumber);
                 }
                 else
                 {
@@ -189,14 +196,6 @@ namespace AlanyaMedicalHelp
             if (checkBox1.Checked)
             {
                 var values = _dbContext.Customer
-     .Where(x =>
-         x.Payment
-             .Any(ss =>
-                 ss.PriceType == 1 && ss.PaymentStatus == false && ss.Price > 0 ||
-                 ss.PriceType == 2 && ss.PaymentStatus == false && ss.Price > 0 ||
-                 ss.PriceType == 3 && ss.PaymentStatus == false && ss.Price > 0
-             )
-     )
      .Select(x => new
      {
          x.Id,
@@ -220,7 +219,9 @@ namespace AlanyaMedicalHelp
          x.CreateDate,
      })
      .Where(x => x.BorcTl > 0 || x.BorcEur > 0 || x.BorcUsd > 0) // Filtreleme
-     .OrderByDescending(x => x.AppointmentDate)
+     .OrderByDescending(x => x.BorcTl)
+    .ThenByDescending(x => x.BorcUsd)
+    .ThenByDescending(x => x.BorcEur)
      .ToList();
 
 
@@ -233,31 +234,9 @@ namespace AlanyaMedicalHelp
             SetDataGridViewHeaders();
         }
 
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        private void BorcsuzListele(int pageNumber)
         {
-            if (checkBox2.Checked)
-            {
-               var values = _dbContext.Customer
-    .Where(x =>
-        (x.Payment
-            .Where(c => c.PriceType == 1 && c.PaymentStatus == false)
-            .Sum(ss => ss.Price) == 0 ||
-         x.Payment
-            .Where(c => c.PriceType == 1 && c.PaymentStatus == false)
-            .Sum(ss => ss.Price) == null) &&
-        (x.Payment
-            .Where(c => c.PriceType == 2 && c.PaymentStatus == false)
-            .Sum(ss => ss.Price) == 0 ||
-         x.Payment
-            .Where(c => c.PriceType == 2 && c.PaymentStatus == false)
-            .Sum(ss => ss.Price) == null) &&
-        (x.Payment
-            .Where(c => c.PriceType == 3 && c.PaymentStatus == false)
-            .Sum(ss => ss.Price) == 0 ||
-         x.Payment
-            .Where(c => c.PriceType == 3 && c.PaymentStatus == false)
-            .Sum(ss => ss.Price) == null)
-    )
+            var values = _dbContext.Customer
     .Select(x => new
     {
         x.Id,
@@ -265,14 +244,14 @@ namespace AlanyaMedicalHelp
         x.Mail,
         x.Phone,
         BorcTl = x.Payment
-             .Where(c => c.PriceType == 1)
-             .Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price),
+            .Where(c => c.PriceType == 1)
+            .Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price),
         BorcEur = x.Payment
-             .Where(c => c.PriceType == 2)
-             .Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price),
+            .Where(c => c.PriceType == 2)
+            .Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price),
         BorcUsd = x.Payment
-             .Where(c => c.PriceType == 3)
-             .Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price),
+            .Where(c => c.PriceType == 3)
+            .Sum(ss => ss.PaymentStatus == false ? ss.Price : -ss.Price),
         x.Country,
         AppointmentDate = x.Appointment
             .OrderByDescending(a => a.AppointmentDate)
@@ -280,11 +259,45 @@ namespace AlanyaMedicalHelp
             .FirstOrDefault(),
         x.CreateDate,
     })
+    .Where(x => (x.BorcEur == null || x.BorcEur == 0) &&
+                (x.BorcTl == null || x.BorcTl == 0) &&
+                (x.BorcUsd == null || x.BorcUsd == 0))
     .OrderByDescending(x => x.AppointmentDate)
+    .Skip((pageNumber - 1) * pageSize)
+                    .Take(pageSize)
     .ToList();
 
+            if (pageNumber == 1)
+            {
+                // İlk sayfa için yeni bir BindingList oluştur
+                dataGridView1.DataSource = new BindingList<object>(values.Cast<object>().ToList());
+            }
+            else
+            {
+                // Sonraki sayfalar için mevcut BindingList'e yeni öğeler ekle
+                var bindingList = (BindingList<object>)dataGridView1.DataSource;
 
-                dataGridView1.DataSource = values;
+                // Mevcut ID'leri al, böylece tekrar eden öğeleri önleyebilirsin
+                var existingIds = bindingList.Select(item => ((dynamic)item).Id).ToHashSet();
+
+                // Sadece yeni öğeleri ekle
+                foreach (var item in values)
+                {
+                    if (!existingIds.Contains(((dynamic)item).Id))
+                    {
+                        bindingList.Add(item);
+                        existingIds.Add(((dynamic)item).Id);  // Duplicate takibi için ID'yi mevcut ID'lere ekle
+                    }
+                }
+            }
+
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox2.Checked)
+            {
+              
             }
             else
             {

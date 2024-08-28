@@ -37,7 +37,7 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CompanyId" Type="int" />
-          <Property Name="Price" Type="int" />
+          <Property Name="Price" Type="float" />
           <Property Name="Type" Type="int" />
           <Property Name="Description" Type="varchar(max)" />
           <Property Name="CreateDate" Type="datetime2" Precision="7" />
