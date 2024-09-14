@@ -45,7 +45,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1706, 692);
+            this.dataGridView1.Size = new System.Drawing.Size(1706, 542);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
@@ -53,7 +53,7 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(87, 765);
+            this.checkBox2.Location = new System.Drawing.Point(400, 595);
             this.checkBox2.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(176, 21);
@@ -65,7 +65,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(87, 736);
+            this.checkBox1.Location = new System.Drawing.Point(400, 566);
             this.checkBox1.Margin = new System.Windows.Forms.Padding(4);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(152, 21);
@@ -78,7 +78,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(112)))), ((int)(((byte)(67)))));
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.button1.Location = new System.Drawing.Point(649, 736);
+            this.button1.Location = new System.Drawing.Point(962, 566);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(139, 37);
@@ -90,7 +90,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(314, 769);
+            this.label2.Location = new System.Drawing.Point(627, 599);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 17);
@@ -100,7 +100,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(283, 736);
+            this.label1.Location = new System.Drawing.Point(596, 566);
             this.label1.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(104, 17);
@@ -109,7 +109,7 @@
             // 
             // dateTimePicker3
             // 
-            this.dateTimePicker3.Location = new System.Drawing.Point(397, 730);
+            this.dateTimePicker3.Location = new System.Drawing.Point(710, 560);
             this.dateTimePicker3.Margin = new System.Windows.Forms.Padding(5);
             this.dateTimePicker3.Name = "dateTimePicker3";
             this.dateTimePicker3.Size = new System.Drawing.Size(230, 25);
@@ -117,7 +117,7 @@
             // 
             // dateTimePicker4
             // 
-            this.dateTimePicker4.Location = new System.Drawing.Point(397, 764);
+            this.dateTimePicker4.Location = new System.Drawing.Point(710, 594);
             this.dateTimePicker4.Margin = new System.Windows.Forms.Padding(5);
             this.dateTimePicker4.Name = "dateTimePicker4";
             this.dateTimePicker4.Size = new System.Drawing.Size(230, 25);
@@ -140,7 +140,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SigortaIslemleri";
-            this.Size = new System.Drawing.Size(1708, 834);
+            this.Size = new System.Drawing.Size(1708, 633);
             this.Load += new System.EventHandler(this.SigortaIslemleri_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

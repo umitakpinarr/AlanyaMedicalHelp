@@ -185,7 +185,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MusteriEkleme";
-            this.Size = new System.Drawing.Size(1760, 813);
+            this.Size = new System.Drawing.Size(1760, 544);
             this.Load += new System.EventHandler(this.MusteriEkleme_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();

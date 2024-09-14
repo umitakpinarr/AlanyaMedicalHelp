@@ -35,12 +35,20 @@ namespace AlanyaMedicalHelp
             Listele();
             dataGridView1.Scroll += dataGridView1_Scroll;
         }
-        int pageSize = 100;
+        int pageSize = 30;
         int pageNumber = 1;
         bool isLoading = false;
 
         public void Listele(string name = null, int pageNumber = 1)
         {
+            if (checkBox1.Checked)
+            {
+                checkBox1.Checked = false;
+            }
+            if (checkBox2.Checked)
+            {
+                checkBox2.Checked = false;
+            }
             if (this.InvokeRequired)
             {
                 this.Invoke(new Action<string, int>(Listele), name, pageNumber);
@@ -218,7 +226,7 @@ namespace AlanyaMedicalHelp
              .FirstOrDefault(),
          x.CreateDate,
      })
-     .Where(x => x.BorcTl > 0 || x.BorcEur > 0 || x.BorcUsd > 0) // Filtreleme
+     .Where(x => x.BorcTl < 0 || x.BorcEur < 0 || x.BorcUsd < 0 || x.BorcTl > 0 || x.BorcEur > 0 || x.BorcUsd > 0) // Filtreleme
      .OrderByDescending(x => x.BorcTl)
     .ThenByDescending(x => x.BorcUsd)
     .ThenByDescending(x => x.BorcEur)
@@ -297,7 +305,7 @@ namespace AlanyaMedicalHelp
         {
             if (checkBox2.Checked)
             {
-              
+                BorcsuzListele(1);
             }
             else
             {

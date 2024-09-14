@@ -42,13 +42,13 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(1725, 630);
+            this.dataGridView1.Size = new System.Drawing.Size(1725, 489);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(727, 670);
+            this.textBox1.Location = new System.Drawing.Point(666, 521);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(212, 25);
@@ -58,7 +58,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(594, 673);
+            this.label1.Location = new System.Drawing.Point(533, 524);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(125, 17);
@@ -68,7 +68,7 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(986, 670);
+            this.checkBox1.Location = new System.Drawing.Point(925, 521);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(125, 21);
             this.checkBox1.TabIndex = 3;
@@ -79,7 +79,7 @@
             // checkBox2
             // 
             this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(1117, 669);
+            this.checkBox2.Location = new System.Drawing.Point(1056, 520);
             this.checkBox2.Name = "checkBox2";
             this.checkBox2.Size = new System.Drawing.Size(134, 21);
             this.checkBox2.TabIndex = 4;
@@ -101,7 +101,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MusteriListeleme";
-            this.Size = new System.Drawing.Size(1725, 872);
+            this.Size = new System.Drawing.Size(1725, 606);
             this.Load += new System.EventHandler(this.MusteriListeleme_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

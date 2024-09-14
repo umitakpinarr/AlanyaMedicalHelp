@@ -40,11 +40,11 @@ namespace AlanyaMedicalHelp
         private void button1_Click(object sender, EventArgs e)
         {
             int convertCompanyId = Convert.ToInt32(firmaId.Text);
-            int convertPrice = Convert.ToInt32(numericUpDown1.Value);
+            decimal convertPrice = Convert.ToDecimal(numericUpDown1.Value);
 
             CompanyPayment companyPayment = new CompanyPayment
             {
-                CompanyId = convertCompanyId, CreateDate = DateTime.Now, Description = richTextBox1.Text, PaymentNo = textBox1.Text, Price = convertPrice, Visible = true, Type = 1
+                CompanyId = convertCompanyId, CreateDate = dateTimePicker1.Value, Description = richTextBox1.Text, PaymentNo = textBox1.Text, Price = convertPrice, Visible = true, Type = 1
             };
             _dbContext.CompanyPayment.Add(companyPayment);
             _dbContext.SaveChanges();

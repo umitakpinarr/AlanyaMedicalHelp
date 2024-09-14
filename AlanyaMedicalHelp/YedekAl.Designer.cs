@@ -61,7 +61,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "YedekAl";
-            this.Size = new System.Drawing.Size(1126, 687);
+            this.Size = new System.Drawing.Size(1126, 353);
             this.ResumeLayout(false);
 
         }

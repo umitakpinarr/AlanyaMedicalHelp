@@ -32,6 +32,7 @@ namespace AlanyaMedicalHelp
                 .Select(x => new
                 {
                     x.Id,
+                    x.PaymentNo,
                     x.Company.Name,
                     x.Price,
                     Type = x.Type == 1 ? "Borç" : x.Type == 2 ? "Ödendi" : "Bulunamadı",
@@ -161,6 +162,41 @@ namespace AlanyaMedicalHelp
         }
 
         private void dateTimePicker4_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                // Eğer tıklanan satır geçerli bir satırsa
+                if (e.RowIndex >= 0)
+                {
+                    var selectedRow = dataGridView1.Rows[e.RowIndex];
+
+                    string Id = selectedRow.Cells["Id"].Value?.ToString() ?? string.Empty;
+
+
+
+                    FirmaBorcGuncelleme form2 = new FirmaBorcGuncelleme(Id);
+                    form2.FormClosed += new FormClosedEventHandler(FirmaBorcGuncelle_FormClosed);
+                    form2.Show();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Bir hata oluştu: " + ex.Message);
+            }
+        }
+
+        private void FirmaBorcGuncelle_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Listele();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

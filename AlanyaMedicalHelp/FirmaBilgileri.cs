@@ -90,6 +90,7 @@ namespace AlanyaMedicalHelp
         {
             string companyId = firmaId.Text;
             FirmaTumBorcGoruntuleme firmaBorcAzaltma = new FirmaTumBorcGoruntuleme(companyId);
+            firmaBorcAzaltma.FormClosed += new FormClosedEventHandler(FirmaGuncelleme_FormClosed);
             firmaBorcAzaltma.Show();
         }
     }

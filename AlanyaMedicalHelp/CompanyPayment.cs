@@ -16,7 +16,7 @@ namespace AlanyaMedicalHelp
     {
         public int Id { get; set; }
         public Nullable<int> CompanyId { get; set; }
-        public Nullable<int> Price { get; set; }
+        public Nullable<decimal> Price { get; set; }
         public Nullable<int> Type { get; set; }
         public string Description { get; set; }
         public Nullable<System.DateTime> CreateDate { get; set; }

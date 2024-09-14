@@ -178,7 +178,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "StokEkleme";
-            this.Size = new System.Drawing.Size(1682, 642);
+            this.Size = new System.Drawing.Size(1682, 516);
             this.Load += new System.EventHandler(this.StokEkleme_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).EndInit();

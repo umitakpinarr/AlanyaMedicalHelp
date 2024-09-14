@@ -124,6 +124,11 @@
             // numericUpDown1
             // 
             this.numericUpDown1.DecimalPlaces = 2;
+            this.numericUpDown1.Increment = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             this.numericUpDown1.Location = new System.Drawing.Point(129, 122);
             this.numericUpDown1.Margin = new System.Windows.Forms.Padding(4);
             this.numericUpDown1.Maximum = new decimal(new int[] {
@@ -134,6 +139,7 @@
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(169, 25);
             this.numericUpDown1.TabIndex = 1;
+            this.numericUpDown1.ThousandsSeparator = true;
             // 
             // label2
             // 

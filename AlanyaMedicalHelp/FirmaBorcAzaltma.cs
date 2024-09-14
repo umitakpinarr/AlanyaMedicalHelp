@@ -24,7 +24,7 @@ namespace AlanyaMedicalHelp
         private void button1_Click(object sender, EventArgs e)
         {
             int convertCompanyId = Convert.ToInt32(firmaId.Text);
-            int convertPrice = Convert.ToInt32(numericUpDown1.Value);
+            decimal convertPrice = Convert.ToDecimal(numericUpDown1.Value);
 
             CompanyPayment companyPayment = new CompanyPayment
             {

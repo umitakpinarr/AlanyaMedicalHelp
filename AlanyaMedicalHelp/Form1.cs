@@ -171,6 +171,29 @@ namespace AlanyaMedicalHelp
             panel1.Controls.Add(_yedekAl);
         }
 
-       
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            // Kullanıcıya onay mesajı göster
+           
+        }
+
+        private void Form1_FormClosing_1(object sender, FormClosingEventArgs e)
+        {
+            var result = MessageBox.Show("Formu kapatmak istediğinize emin misiniz?",
+                                        "Onay",
+                                        MessageBoxButtons.YesNo,
+                                        MessageBoxIcon.Question);
+
+            // Eğer kullanıcı 'Hayır' seçeneğini seçerse, kapanmayı iptal et
+            if (result == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+        }
     }
 }
