@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -27,8 +28,49 @@ namespace AlanyaMedicalHelp
         private void SecilenMusteriTumRandevular_Load(object sender, EventArgs e)
         {
             Listele();
+            Listele2();
         }
+        private void Listele2()
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new Action(Listele));
+                return;
+            }
 
+            using (var dbContext = new AlanyaMedicalHelpEntities())
+            {
+                int convertCustomerId = Convert.ToInt32(label1.Text);
+
+                var values = dbContext.Payment.Where(x => x.MusteriId == convertCustomerId)
+                    .Select(x => new
+                    {
+                        x.Id,
+                        AppointmentDesc = x.Description,
+                        x.Price,
+                        PriceType = x.PriceType == 1 ? "TL" : x.PriceType == 2 ? "EUR" : "USD",
+                        PaymentStatus = x.PaymentStatus == true ? "Ödendi" : x.PaymentStatus == false ? "Ödenmedi" : "Bulunamadı",  // Koşullu ifadei,
+                        x.CreateDate
+                    })
+                    .ToList();
+                dataGridView2.DataSource = values.Where(x=> x.PaymentStatus == "Ödendi").ToList();
+                label7.Text = values.Where(x => x.PriceType == "TL").Sum(ss => ss.PaymentStatus == "Ödenmedi" ? ss.Price : -ss.Price).ToString();
+                label11.Text = values.Where(x => x.PriceType == "EUR").Sum(ss => ss.PaymentStatus == "Ödenmedi" ? ss.Price : -ss.Price).ToString();
+                label13.Text = values.Where(x => x.PriceType == "USD").Sum(ss => ss.PaymentStatus == "Ödenmedi" ? ss.Price : -ss.Price).ToString();
+
+            }
+            dataGridView2.Columns["Id"].HeaderText = "ID";
+            dataGridView2.Columns["AppointmentDesc"].HeaderText = "Açıklama";
+            dataGridView2.Columns["Price"].HeaderText = "Fiyat";
+            dataGridView2.Columns["PriceType"].HeaderText = "Para Birimi";
+            dataGridView2.Columns["PaymentStatus"].HeaderText = "Ödeme Durumu";
+            dataGridView2.Columns["CreateDate"].HeaderText = "Oluşturulma Tarihi";
+            dataGridView2.Columns["Id"].Visible = false;
+            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+
+
+        }
         private void Listele()
         {
             if (this.InvokeRequired)
@@ -115,6 +157,7 @@ namespace AlanyaMedicalHelp
         private void RandvuGuncelle_FormClosed(object sender, FormClosedEventArgs e)
         {
             Listele();
+            Listele2();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

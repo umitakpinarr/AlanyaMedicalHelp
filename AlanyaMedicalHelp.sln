@@ -5,7 +5,7 @@ VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AlanyaMedicalHelp", "AlanyaMedicalHelp\AlanyaMedicalHelp.csproj", "{C3C98791-4511-4CFF-9789-65E8086789EC}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AlanyaMedicalHelpSetup", "AlanyaMedicalHelpSetup\AlanyaMedicalHelpSetup.vdproj", "{AF662441-7924-4755-80D4-EEF181F905EF}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AlanyaMedicalHelpSetup", "AlanyaMedicalHelpSetup\AlanyaMedicalHelpSetup.vdproj", "{8E99A538-2991-4788-B47D-0A2B494CCCEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,8 +17,8 @@ Global
 		{C3C98791-4511-4CFF-9789-65E8086789EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3C98791-4511-4CFF-9789-65E8086789EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3C98791-4511-4CFF-9789-65E8086789EC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AF662441-7924-4755-80D4-EEF181F905EF}.Debug|Any CPU.ActiveCfg = Debug
-		{AF662441-7924-4755-80D4-EEF181F905EF}.Release|Any CPU.ActiveCfg = Release
+		{8E99A538-2991-4788-B47D-0A2B494CCCEA}.Debug|Any CPU.ActiveCfg = Debug
+		{8E99A538-2991-4788-B47D-0A2B494CCCEA}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

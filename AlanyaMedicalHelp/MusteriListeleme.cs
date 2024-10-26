@@ -35,7 +35,7 @@ namespace AlanyaMedicalHelp
             Listele();
             dataGridView1.Scroll += dataGridView1_Scroll;
         }
-        int pageSize = 30;
+        int pageSize = 25;
         int pageNumber = 1;
         bool isLoading = false;
 
@@ -201,6 +201,7 @@ namespace AlanyaMedicalHelp
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
+            checkBox2.Checked = false;
             if (checkBox1.Checked)
             {
                 var values = _dbContext.Customer
@@ -303,6 +304,7 @@ namespace AlanyaMedicalHelp
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
+            checkBox1.Checked = false;
             if (checkBox2.Checked)
             {
                 BorcsuzListele(1);
